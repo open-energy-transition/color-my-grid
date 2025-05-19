@@ -11,19 +11,19 @@ DEFAULT_VALUES = {
     "basic_power_node_symbol_size_high": 8,
     
     # Area styling variables
-    "substation_area_width_low": 1,
+    "substation_area_width_low": 10,
     "substation_area_width_mid": 2,
-    "substation_area_width_high": 3,
+    "substation_area_width_high": 4,
     "substation_default_color": "#FFFFFF",
     "substation_transmission_color": "#DC143C",
     "substation_distribution_color": "#008F11",
     
-    "power_plant_area_width_low": 1,
+    "power_plant_area_width_low": 5,
     "power_plant_area_width_mid": 2,
-    "power_plant_area_width_high": 3,
+    "power_plant_area_width_high": 4,
     "power_plant_color": "#000000",
     
-    "power_generator_area_width_low": 1,
+    "power_generator_area_width_low": 3,
     "power_generator_area_width_mid": 2,
     "power_generator_area_width_high": 3,
     "power_generator_color": "#FFFF00",
@@ -33,7 +33,7 @@ DEFAULT_VALUES = {
     "industrial_area_width_high": 3,
     
     # Line styling variables
-    "line_cable_width_low": 2,
+    "line_cable_width_low": 4,
     "line_cable_width_mid": 3,
     "line_cable_width_high": 4,
     
@@ -54,20 +54,20 @@ DENSE_VALUES = {
     
     # Area styling variables
     "substation_area_width_low": 0.5,
-    "substation_area_width_mid": 1,
-    "substation_area_width_high": 2,
+    "substation_area_width_mid": 2,
+    "substation_area_width_high": 1,
     "substation_default_color": "#FFFFFF",
     "substation_transmission_color": "#DC143C",
     "substation_distribution_color": "#008F11",
     
     "power_plant_area_width_low": 0.5,
-    "power_plant_area_width_mid": 1,
-    "power_plant_area_width_high": 2,
+    "power_plant_area_width_mid": 2,
+    "power_plant_area_width_high": 1,
     "power_plant_color": "#000000",
     
     "power_generator_area_width_low": 0.5,
-    "power_generator_area_width_mid": 1,
-    "power_generator_area_width_high": 2,
+    "power_generator_area_width_mid": 2,
+    "power_generator_area_width_high": 1,
     "power_generator_color": "#FFFF00",
     
     "industrial_area_width_low": 0.5,
