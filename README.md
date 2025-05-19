@@ -1,10 +1,6 @@
-# ColorMyMap!
-
-# Color My Map! 🎨
+# ColorMyMap! 🎨
 
 A Python tool for generating customized MapCSS styles for electrical transmission networks in JOSM (Java OpenStreetMap Editor).
-
-![Banner Image](https://wiki.openstreetmap.org/w/images/e/e9/Electrical_grid_with_JOSM.png)
 
 ## 📋 Overview
 
