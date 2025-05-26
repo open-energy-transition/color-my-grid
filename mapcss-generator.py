@@ -304,7 +304,7 @@ def main():
     if len(sys.argv) > 1:
         template_file = sys.argv[1]
     else:
-        template_file = input("📄 Which template should we use? (default: oh_my_grid_template.mapcss): ").strip() or "oh_my_grid_template.mapcss"
+        template_file = input("📄 Which template should we use? (default: oh-my-grid-default.mapcss): ").strip() or "oh-my-grid-default.mapcss"
     
     if not os.path.exists(template_file):
         print(f"❌ Hmm, I can't find the file '{template_file}'. Please check the path and try again.")

@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 406.19531 22.476563"
+   font-family="Arial, sans-serif"
+   version="1.1"
+   id="svg162"
+   sodipodi:docname="power-grid-legend.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   width="406.19531"
+   height="22.476562"
+   inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+   inkscape:export-xdpi="140"
+   inkscape:export-ydpi="140"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs166" />
+  <sodipodi:namedview
+     id="namedview164"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="1.0271429"
+     inkscape:cx="52.573016"
+     inkscape:cy="299.37412"
+     inkscape:window-width="1920"
+     inkscape:window-height="1136"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg162"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <!-- Background -->
+  <rect
+     width="735.39209"
+     height="662.44617"
+     fill="#e6e6e6"
+     rx="9.1924009"
+     ry="9.4635172"
+     id="rect2"
+     x="-167.90506"
+     y="-22.448002"
+     style="stroke-width:0.932697"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140" />
+  <!-- Title -->
+  <text
+     x="200.44724"
+     y="17.390625"
+     font-size="24px"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text4"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140">Transmission Grid Mapping Legend</text>
+  <!-- Section Titles -->
+  <text
+     x="-111.59166"
+     y="64.384781"
+     font-size="18px"
+     font-weight="bold"
+     id="text6"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140">Power Lines by Voltage</text>
+  <text
+     x="284.0827"
+     y="64.424332"
+     font-size="18px"
+     font-weight="bold"
+     id="text8"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140">Nodes</text>
+  <text
+     x="-111.87704"
+     y="346.54779"
+     font-size="18px"
+     font-weight="bold"
+     id="text10"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140">Line Properties</text>
+  <text
+     x="284.0827"
+     y="267.1738"
+     font-size="18px"
+     font-weight="bold"
+     id="text12"
+     inkscape:transform-center-x="-35.625431"
+     inkscape:transform-center-y="-18.546224"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140">Power Stations</text>
+  <text
+     x="284.0827"
+     y="404.93164"
+     font-size="18px"
+     font-weight="bold"
+     id="text12-7"
+     inkscape:transform-center-x="-35.625431"
+     inkscape:transform-center-y="-18.546224"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140">Substations</text>
+  <!-- Power Lines by Voltage -->
+  <g
+     transform="translate(-107.87464,76.592227)"
+     id="g42"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140">
+    <!-- Under 132kV -->
+    <line
+       x1="0"
+       y1="25"
+       x2="80"
+       y2="25"
+       stroke="#deb887"
+       stroke-width="4"
+       stroke-linecap="round"
+       id="line16" />
+    <text
+       x="90"
+       y="30"
+       font-size="14px"
+       id="text18">Under 132kV</text>
+    <!-- 132-220kV -->
+    <line
+       x1="0"
+       y1="55"
+       x2="80"
+       y2="55"
+       stroke="#ff7f50"
+       stroke-width="4"
+       stroke-linecap="round"
+       id="line20" />
+    <text
+       x="90"
+       y="60"
+       font-size="14px"
+       id="text22">132-220kV</text>
+    <!-- 220-310kV -->
+    <line
+       x1="0"
+       y1="85"
+       x2="80"
+       y2="85"
+       stroke="#cd5c5c"
+       stroke-width="4"
+       stroke-linecap="round"
+       id="line24" />
+    <text
+       x="90"
+       y="90"
+       font-size="14px"
+       id="text26">220-310kV</text>
+    <!-- 310-550kV -->
+    <line
+       x1="0"
+       y1="115"
+       x2="80"
+       y2="115"
+       stroke="#9400d3"
+       stroke-width="4"
+       stroke-linecap="round"
+       id="line28" />
+    <text
+       x="90"
+       y="120"
+       font-size="14px"
+       id="text30">310-550kV</text>
+    <!-- >550kV -->
+    <line
+       x1="0"
+       y1="145"
+       x2="80"
+       y2="145"
+       stroke="#00ced1"
+       stroke-width="4"
+       stroke-linecap="round"
+       id="line32" />
+    <text
+       x="90"
+       y="150"
+       font-size="14px"
+       id="text34">Above 550kV</text>
+    <!-- No voltage -->
+    <line
+       x1="0"
+       y1="175"
+       x2="80"
+       y2="175"
+       stroke="#ffffff"
+       stroke-width="4"
+       stroke-linecap="round"
+       id="line36" />
+    <rect
+       x="-2"
+       y="173"
+       width="84"
+       height="4"
+       stroke="#000000"
+       stroke-width="0.5"
+       fill="none"
+       id="rect38" />
+    <text
+       x="90"
+       y="180"
+       font-size="14px"
+       id="text40">No voltage data</text>
+  </g>
+  <!-- Node Types -->
+  <g
+     transform="translate(306.95199,78.258648)"
+     id="g72"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140">
+    <!-- Tower -->
+    <rect
+       x="0"
+       y="15"
+       width="20"
+       height="20"
+       fill="#0000ff"
+       stroke="#000000"
+       stroke-width="0.5"
+       id="rect44" />
+    <text
+       x="30"
+       y="29.747559"
+       font-size="14px"
+       id="text46">Tower</text>
+    <!-- Pole -->
+    <rect
+       x="0"
+       y="45"
+       width="20"
+       height="20"
+       fill="#000000"
+       stroke="#000000"
+       stroke-width="0.5"
+       id="rect48" />
+    <rect
+       x="-0.24875945"
+       y="74.778831"
+       width="20"
+       height="20"
+       fill="#000000"
+       stroke="#000000"
+       stroke-width="0.5"
+       id="rect48-3"
+       style="fill:#008f11;fill-opacity:1" />
+    <text
+       x="30"
+       y="60.003906"
+       font-size="14px"
+       id="text50">Pole</text>
+    <text
+       x="29.524141"
+       y="89.782738"
+       font-size="14px"
+       id="text50-6">Portal</text>
+    <!-- Substation -->
+    <rect
+       x="-17.91394"
+       y="411.95395"
+       width="20"
+       height="20"
+       fill="#ffffff"
+       stroke="#000000"
+       stroke-width="1"
+       id="rect52"
+       style="stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:25;stroke-dasharray:none" />
+    <text
+       x="12.086061"
+       y="426.95395"
+       font-size="14px"
+       id="text54">Unknown Substation Type</text>
+    <!-- Transmission Substation -->
+    <rect
+       x="-18.209438"
+       y="351.98831"
+       width="20"
+       height="20"
+       fill="#dc143c"
+       stroke="#dc143c"
+       stroke-width="1.5"
+       id="rect56"
+       style="stroke-linecap:round;stroke-linejoin:round;paint-order:normal" />
+    <text
+       x="11.790562"
+       y="366.98831"
+       font-size="14px"
+       id="text58">Transmission Substation</text>
+    <!-- Distribution Substation -->
+    <rect
+       x="-18.209438"
+       y="381.98831"
+       width="20"
+       height="20"
+       fill="#008f11"
+       stroke="#008f11"
+       stroke-width="1.5"
+       id="rect60" />
+    <text
+       x="11.790562"
+       y="396.98831"
+       font-size="14px"
+       id="text62">Distribution Substation</text>
+    <!-- Generator -->
+    <rect
+       x="-0.25883019"
+       y="103.63863"
+       width="20"
+       height="20"
+       fill="#ffff00"
+       stroke="#000000"
+       stroke-width="0.5"
+       id="rect64" />
+    <text
+       x="29.741171"
+       y="118.45797"
+       font-size="14px"
+       id="text66">Generator</text>
+    <!-- Switch -->
+  </g>
+  <!-- Line Properties -->
+  <g
+     transform="translate(-112.67396,347.61647)"
+     id="g100"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140">
+    <!-- Cable -->
+    <line
+       x1="0"
+       y1="25"
+       x2="80"
+       y2="25"
+       stroke="#888888"
+       stroke-width="4"
+       stroke-dasharray="9, 9"
+       id="line74" />
+    <text
+       x="90"
+       y="30"
+       font-size="14px"
+       id="text76">Underground Cable</text>
+    <!-- Multi-circuit line -->
+    <line
+       x1="0"
+       y1="55"
+       x2="80"
+       y2="55"
+       stroke="#9400d3"
+       stroke-width="4"
+       id="line78" />
+    <line
+       x1="0"
+       y1="55"
+       x2="80"
+       y2="55"
+       stroke="#555555"
+       stroke-width="8"
+       stroke-dasharray="2, 14"
+       id="line80" />
+    <text
+       x="90"
+       y="60"
+       font-size="14px"
+       id="text82">Multi-circuit Line</text>
+    <!-- Proposed/Construction -->
+    <line
+       x1="0"
+       y1="85"
+       x2="80"
+       y2="85"
+       stroke="#cd5c5c"
+       stroke-width="4"
+       stroke-dasharray="8, 4"
+       id="line84" />
+    <text
+       x="90"
+       y="90"
+       font-size="14px"
+       id="text86">Construction</text>
+    <!-- Bridge -->
+    <text
+       x="90"
+       y="120"
+       font-size="14px"
+       id="text92" />
+    <!-- Tunnel -->
+  </g>
+  <!-- Power Stations & Areas -->
+  <g
+     transform="translate(285.45545,281.67651)"
+     id="g122"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140">
+    <!-- Power Plant -->
+    <rect
+       x="0"
+       y="15"
+       width="30"
+       height="20"
+       fill="#000000"
+       stroke="#000000"
+       stroke-width="1.5"
+       id="rect102" />
+    <text
+       x="39.517155"
+       y="30.624224"
+       font-size="14px"
+       id="text104">Power Plant</text>
+    <!-- Industrial Area -->
+    <rect
+       x="0.25"
+       y="48.119617"
+       width="30"
+       height="20"
+       fill="none"
+       stroke="#ff8c00"
+       stroke-width="2"
+       stroke-dasharray="4, 4"
+       id="rect106" />
+    <text
+       x="39.3736"
+       y="62.350353"
+       font-size="14px"
+       id="text108">Industrial Area</text>
+    <!-- Busbar -->
+    <g
+       id="g75326">
+      <line
+         x1="2.734333"
+         y1="245.5974"
+         x2="32.734333"
+         y2="245.5974"
+         stroke="#ffd800"
+         stroke-width="6"
+         id="line112" />
+      <text
+         x="43.001488"
+         y="250.30168"
+         font-size="14px"
+         id="text114">Busbar</text>
+    </g>
+    <!-- Bay -->
+    <g
+       id="g75330">
+      <line
+         x1="3.0332484"
+         y1="267.84677"
+         x2="33.033249"
+         y2="267.84677"
+         stroke="#555555"
+         stroke-width="6"
+         id="line118" />
+      <text
+         x="43.300404"
+         y="271.21008"
+         font-size="14px"
+         id="text120">Bay</text>
+    </g>
+  </g>
+  <!-- Generator Sources -->
+  <g
+     transform="translate(32.12536,516.59223)"
+     id="g156">
+    <!-- Nuclear -->
+    <!-- Wind -->
+    <!-- Hydro -->
+    <!-- Solar -->
+    <!-- Coal -->
+    <!-- Gas -->
+    <!-- Biomass -->
+    <!-- Oil -->
+  </g>
+  <!-- Footer -->
+  <text
+     x="231.73294"
+     y="598.34052"
+     font-size="12px"
+     text-anchor="middle"
+     fill="#333333"
+     id="text158"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140">Created for the OhMyGrid Initiative based on the transmission-grid-mapping-style CSS</text>
+  <text
+     x="226.54135"
+     y="618.79462"
+     font-size="10px"
+     text-anchor="middle"
+     fill="#444444"
+     id="text160"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140">Adapted from the 'detailed power grid style' by FLacombe</text>
+  <image
+     width="16"
+     height="16"
+     preserveAspectRatio="none"
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAA3NCSVQICAjb4U/gAAABZklEQVQo kYWRwUoCURSGv0aTQEsiiiCQoI2QVkTRiLQoXIQJgtAmqE29gM/Qpgdp1WskMmNTMXQnI4miZYhY aAqa02JujpNFZ3Xu/c93zs85I7aBEwGVZoFRPz/io810imZBPpWf+n8hG1brdLoE1D/r3htMhAYm aLcA56c4Dm3DTc5OADThtVSymAiiC4ZDF4wHZUfPhKOsBPprcBJdcJylZHkBXZDf5/KOTtfTvtPF rJDf5+JmACg/4fMRyTAWwHzwAFdlwiEiGT57VF6+Ae2WnQS2wV7K9dq3mtvCNkgnpaQ4ftQ4gBpH tzzAsKQ4K9uIAaixoQlDktJqc//MahRgcYHXGu8NWV2tU3sjOg+wvoh4pNXGX7KYmXRvHJmlYJJO AhRNpsKMrElpbobrexRdkNuWp7UNDnddV7rFwa4r5bbQBIpuocZc02p8ABC/SErJIrHk/m6uyHv3 ehRNkssDQAxN8AUC25yvFz7ioQAAAABJRU5ErkJggg== "
+     id="image25047"
+     x="283.41171"
+     y="155.03749"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140" />
+  <image
+     width="16"
+     height="16"
+     preserveAspectRatio="none"
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAA3NCSVQICAjb4U/gAAACKElEQVQo kZWSTWgTURSFz5s2FYnRWWgNFiWDhoBuKkhAKEJ+UGlFrDOBSmIGkbrQhQHXklh0I5gGWkGUCtEG QZoakyGJYSabxtLKLJRiq4KMETciRE0tgYyT52JCmpXQu7r3cbj3vMNHqIotVW/38Gsd91LMm7Ud bz/qAAZdluNHNm4EDZt1U8N0OmkBLqHvS+P8eGRmcWllcWllPDLzeWPUFdhWeN21laqgKqSExd5v UxSZUkopFUVRFEWzL5Ve7d1jK0xZTCUD4GcdlybI3HxhcjKhKAoAh8PBcRwAWZanp++nnr0QY6T+ BwB6YlfwMLN9Nxe4eu263W4XBMHtdlerVUJIq9USBCEej/t8vrXV9z++a+7DOqiKwPD+YrFoGlAU hWXZcDgsiiLLsoqimO+5XG7szAGqglAVAyPWZfVDMpnUdR2ApmmpVIpSGgqFTGMWiyUQCPg9x75m 1xkARqtVq9VMdTsJSgkhnVHX9UajoetGO6VTQ7vy+fz/LUmSNHyCbac0eLD+6MFdAOVymef5dDrN cRzHcel0muf5SqUCYCpx5+ih3+0LWhY2KyPLssfjMVdGo9FYLEYplWXZ7/dnMvPszp5veVAVvQAc +/DkVisU5J/Oznm9XgAMw5h/8Pl8hmFcDPKzE8ZAPwCQDnzSAi7f7jt5+uy50TGn09lsNjVNy758 XipmH99sjgy1ZaSbVhO+5VXru09/O/BFLhisbVNDtor3PxyaHwB6gf/mAAAAAElFTkSuQmCC "
+     id="image36836"
+     x="282.68253"
+     y="183.89729"
+     inkscape:transform-center-x="-4.984624"
+     inkscape:transform-center-y="8.3060119"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140" />
+  <image
+     width="12"
+     height="16"
+     preserveAspectRatio="none"
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAQCAYAAAAiYZ4HAAAABHNCSVQICAgIfAhkiAAAAUBJREFU KJGFkT9LA0EQxX8b7ESINlESTCEk2N3hKQgiWFlZBAQ7u/SC38Eq4EeQdFpZWIiVIIIoi3eFCBcQ VKLY3cGJjYax2LvcP9CBgWHm7cx7b6EQoul3O0i3g4jmqDhXMUiyzeVdUAru+gWwY/DJgz8zWVop 0OHhBFpNWGiYWnT+SiULBnB9GLzA09DU2RmAKvLfP4TaDHz/QBBBb6/syr/8szpylERDdQqCS3g7 N3XST2Iiy/H5HcIIpjdSwOsHzM+mmIpyUMpBodhxfdhaT7duroLnA8J2gkttFWxvAGdXoByTFzex UwqrZCtguz6c9tILxwfgDcyMYogmaNTKzjTnENEM86I96mFA9fOr/LOTaxBG1MWlqmxCQ2mErR9h aRGA67ERcGu1Yx0jVlINYvjbbQDuM0Z4VmvslAXwCxgSnx++kXSTAAAAAElFTkSuQmCC "
+     id="image36848"
+     x="284.9306"
+     y="95.281799"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140" />
+  <image
+     width="12"
+     height="16"
+     preserveAspectRatio="none"
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAQCAYAAAAiYZ4HAAAABHNCSVQICAgIfAhkiAAAAGdJREFU KJFjZEAD/88w/EfmM5owMCLzmdA1MDAwMPRUCjP0VApjk2JgQTeRkI0wAaLw/zMM/7E6CR9gQbIJ xQ8MDAwMJe1v4WKMJhAaxQb0EMEmxoRuOi4AU8OCzVR8tpDs6VENxAAATTgj4EAbwjoAAAAASUVO RK5CYII= "
+     id="image36940"
+     x="285.41171"
+     y="125.25865"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140" />
+</svg>

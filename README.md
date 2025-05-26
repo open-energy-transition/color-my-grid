@@ -1,10 +1,10 @@
-# ColorMyMap! 🎨
+# ColorMyGrid! 🎨
 
 A Python tool for generating customized MapCSS styles for electrical transmission networks in JOSM (Java OpenStreetMap Editor).
 
 ## 📋 Overview
 
-Color My Map! makes it easy to create beautiful, customized MapCSS styles for mapping power infrastructure in OpenStreetMap. Designed for electrical grid mappers, this tool allows you to:
+ColorMyGrid makes it easy to create beautiful, customized MapCSS styles for mapping power infrastructure in OpenStreetMap. Designed for electrical grid mappers, this tool allows you to:
 
 - Customize node styling, area appearances, and line widths
 - Create color schemes for different voltage levels
@@ -25,8 +25,8 @@ Perfect for OSM mappers focusing on electrical infrastructure, utility companies
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/color_my_map.git
-   cd color_my_map
+   git clone https://github.com/yourusername/color-my-grid.git
+   cd color-my-grid
    ```
 
 2. Make sure you have Python 3.6+ installed.
@@ -40,7 +40,7 @@ Perfect for OSM mappers focusing on electrical infrastructure, utility companies
 
 1. Run the script:
    ```
-   python mapcss_generator.py
+   python mapcss-generator.py
    ```
 
 2. Follow the interactive prompts to:
@@ -77,9 +77,9 @@ Define how different voltage levels appear on your map:
 
 Example: `0 1000 #7B7B7B` creates a rule for 0-1000V lines in gray.
 
-## 📝 Template Structure
+## 📝 Default Structure
 
-The tool works with MapCSS templates that include placeholders for customizable values. The default template includes:
+The tool works with MapCSS defaults that include placeholders for customizable values. The default template includes:
 
 - Node styling rules for power infrastructure
 - Area styling for substations, power plants, and generators
@@ -87,6 +87,10 @@ The tool works with MapCSS templates that include placeholders for customizable 
 - Voltage-based styling section
 
 Placeholders are indicated with double curly braces, like: `{{basic_power_node_symbol_size_low}}`
+
+## 🏙️ High Density 
+
+For urban areas and highliy developed areas the default mapping style might slow down your mapping experience with the default MapCSS configuration and bolt lines. To map in dense grid areas [another default MapCSS is recommended to use](default-high-density-transmission-grid-mapping-style.mapcss). 
 
 ## ❓ Troubleshooting
 
@@ -107,21 +111,28 @@ Placeholders are indicated with double curly braces, like: `{{basic_power_node_s
 ### Basic Usage
 
 ```
-python mapcss_generator.py
+python mapcss-generator.py
 ```
 
 Follow the prompts to create a style using the default template.
 
-### With Custom Template
+### With ohmygrid-default.mapcss default painting style as template
 
 ```
-python mapcss_generator.py oh_my_grid_template.mapcss
+python mapcss-generator.py ohmygrid-default.mapcss
 ```
+
+## 🗺️ Legend 
+The quickly understand the default ohmygrid painting style a map legend is provided: 
+
+![](legend/power-grid-legend.png)
+
+The [original SVG file](power-grid-legend.svg) can be edited using [Inkscape](https://inkscape.org/).
 
 ## 🙏 Credits
 
 - Original "Detailed Power Grid Style" by FLacombe
-- Adapted for transmission grid mapping by [OhMyGrid!](https://ohmygrid.org/) 
+- Adapted for transmission grid mapping by [OhMyGrid](https://ohmygrid.org/) 
 
 ## 🔗 Related Links
 
