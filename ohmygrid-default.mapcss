@@ -1,5 +1,5 @@
 meta {
-	title: "transmission-grid-mapping-style";
+	title: "ohmygrid-low-density-grid-painting";
 	description: "A style for fast electrical grid mapping of wide-area transmission networks. Adapted from the 'detailed power grid style' by FLacombe.";
 	version: "0.3";	
 	author: "Mwiche", "Oh My Grid Initiative";
