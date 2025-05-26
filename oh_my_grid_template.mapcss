@@ -718,7 +718,7 @@ node[Type] {
 }
 
 /* Zoom level behaviors for nodes */
-node|z-16[setting("hide_icons")].icon_z17!.icon_z0,
+node|z-15[setting("hide_icons")].icon_z17!.icon_z0,
 relation|z-16[type=restriction][setting("hide_icons")] {
     icon-image: none;
 }
