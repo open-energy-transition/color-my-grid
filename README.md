@@ -90,7 +90,7 @@ Placeholders are indicated with double curly braces, like: `{{basic_power_node_s
 
 ## 🏙️ High Density 
 
-For urban areas and highliy developed areas the default mapping style might slow down your mapping experience with the default MapCSS configuration and bolt lines. To map in dense grid areas [another default MapCSS is recommended to use](default-high-density-transmission-grid-mapping-style.mapcss). 
+For urban areas and highliy developed areas the default mapping style might slow down your mapping experience with the default MapCSS configuration and bolt lines. To map in dense grid areas [another default MapCSS is recommended to use](ohmygrid-default-high-density.mapcss). 
 
 ## ❓ Troubleshooting
 
