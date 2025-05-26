@@ -1,8 +1,13 @@
 # ColorMyGrid! 🎨
 
-A Python tool for generating customized MapCSS styles for electrical transmission networks in JOSM (Java OpenStreetMap Editor).
+Definition of default OhMyGrid MapCSS files and tools for generating customized MapCSS styles for electrical transmission networks in JOSM (Java OpenStreetMap Editor).
 
-## 📋 Overview
+## 🏙️ Defaults 
+ 
+1. Low density: For countries with a low-density grid, we recommend using a Bolt mapping style to quickly identify gaps in the grid. For denser grids, this might slow down JOSM. [ohmygrid-default-high-density.mapcss](ohmygrid-default-high-density.mapcss).
+2. High density: In urban and highly developed areas, the default mapping style may slow down your mapping experience with the standard MapCSS configuration and bolt lines. [ohmygrid-default-high-density.mapcss](ohmygrid-default-high-density.mapcss).
+
+## 📋 Tool Overview
 
 ColorMyGrid makes it easy to create beautiful, customized MapCSS styles for mapping power infrastructure in OpenStreetMap. Designed for electrical grid mappers, this tool allows you to:
 
@@ -87,10 +92,6 @@ The tool works with MapCSS defaults that include placeholders for customizable v
 - Voltage-based styling section
 
 Placeholders are indicated with double curly braces, like: `{{basic_power_node_symbol_size_low}}`
-
-## 🏙️ High Density 
-
-For urban areas and highliy developed areas the default mapping style might slow down your mapping experience with the default MapCSS configuration and bolt lines. To map in dense grid areas [another default MapCSS is recommended to use](ohmygrid-default-high-density.mapcss). 
 
 ## ❓ Troubleshooting
 
