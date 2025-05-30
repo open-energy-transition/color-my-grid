@@ -28,8 +28,8 @@
      inkscape:pagecheckerboard="0"
      showgrid="false"
      inkscape:zoom="1.0271429"
-     inkscape:cx="52.573016"
-     inkscape:cy="299.37412"
+     inkscape:cx="91.515991"
+     inkscape:cy="281.84978"
      inkscape:window-width="1920"
      inkscape:window-height="1136"
      inkscape:window-x="0"
@@ -42,7 +42,7 @@
      fit-margin-bottom="0" />
   <!-- Background -->
   <rect
-     width="735.39209"
+     width="735.39203"
      height="662.44617"
      fill="#e6e6e6"
      rx="9.1924009"
@@ -67,7 +67,7 @@
      inkscape:export-ydpi="140">Transmission Grid Mapping Legend</text>
   <!-- Section Titles -->
   <text
-     x="-111.59166"
+     x="-112.77694"
      y="64.384781"
      font-size="18px"
      font-weight="bold"
@@ -85,7 +85,7 @@
      inkscape:export-xdpi="140"
      inkscape:export-ydpi="140">Nodes</text>
   <text
-     x="-111.87704"
+     x="-112.77694"
      y="346.54779"
      font-size="18px"
      font-weight="bold"
@@ -93,6 +93,15 @@
      inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
      inkscape:export-xdpi="140"
      inkscape:export-ydpi="140">Line Properties</text>
+  <text
+     x="-112.02108"
+     y="494.79758"
+     font-size="18px"
+     font-weight="bold"
+     id="text10-3"
+     inkscape:export-filename="/home/cy0/gitclones/color_my_map/legend/power-grid-legend.png"
+     inkscape:export-xdpi="140"
+     inkscape:export-ydpi="140">Administrative Border</text>
   <text
      x="284.0827"
      y="267.1738"
@@ -393,11 +402,26 @@
        stroke-width="4"
        stroke-dasharray="8, 4"
        id="line84" />
+    <line
+       x1="1.15891"
+       y1="182.08807"
+       x2="81.15892"
+       y2="182.08807"
+       stroke="#cd5c5c"
+       stroke-width="4"
+       stroke-dasharray="8, 4"
+       id="line84-7"
+       style="stroke:#fb0379;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:24, 4;stroke-dashoffset:0;stroke-opacity:1" />
     <text
        x="90"
        y="90"
        font-size="14px"
        id="text86">Construction</text>
+    <text
+       x="91.42025"
+       y="185.7077"
+       font-size="14px"
+       id="text86-2">Country/State/Province Border</text>
     <!-- Bridge -->
     <text
        x="90"
@@ -422,7 +446,8 @@
        fill="#000000"
        stroke="#000000"
        stroke-width="1.5"
-       id="rect102" />
+       id="rect102"
+       style="fill:none;fill-opacity:1;stroke:#33ff00;stroke-opacity:1;stroke-width:2.6;stroke-miterlimit:4;stroke-dasharray:none" />
     <text
        x="39.517155"
        y="30.624224"
