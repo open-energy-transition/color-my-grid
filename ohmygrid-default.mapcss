@@ -87,7 +87,7 @@ node|z-15[power=pole] {
 }
 
 /* Only show unconnected towers at z16+ */
-node|z10-30[power=tower]:unconnected {
+node|z9-30[power=tower]:unconnected {
     symbol-shape: square;
     symbol-fill-color: blue;
     symbol-size: 10; 
@@ -106,6 +106,14 @@ node|z18-[power=substation][substation=industrial] {
     text: "operator";
     font-size: 8;
     symbol-size: 5;
+    color: red;
+    fill-opacity: 0.05; 
+}
+
+node|z-18[power=substation][substation=industrial] {
+    text: "operator";
+    font-size: 0;
+    symbol-size: 3;
     color: red;
     fill-opacity: 0.05; 
 }
@@ -264,13 +272,13 @@ area|z20-[power=substation][substation=distribution] {
 /* Dynamic widths for industrial areas */
 area|z0-15[landuse=industrial] {
     color: darkorange;
-    width: 1;
+    width: 5;
     dashes: 4,4;
 }
 
 area|z16-19[landuse=industrial] {
     color: darkorange;
-    width: 2;
+    width: 5;
     dashes: 4,4;
 }
 
@@ -284,29 +292,29 @@ area|z20-[landuse=industrial] {
 /* Dynamic widths for power plants - fixed colors */
 way|z0-15[power=plant] {
     width: 5;
-    color: #33ff00;
-    fill-color: #33ff00;
+    color: #01FFFF;
+    fill-color: #01FFFF;
     fill-opacity: 0; 
 }
 
 area|z0-15[power=plant] {
     width: 5;
-    color: #33ff00;
-    fill-color: #33ff00;
+    color: #01FFFF;
+    fill-color: #01FFFF;
     fill-opacity: 0; 
 }
 
 way|z16-19[power=plant] {
     width: 2;
-    color: #33ff00;
-    fill-color: #33ff00;
+    color: #01FFFF;
+    fill-color: #01FFFF;
     fill-opacity: 0.1; 
 }
 
 way|z20-[power=plant] {
     width: 4;
-    color: #33ff00;
-    fill-color: #33ff00;
+    color: #01FFFF;
+    fill-color: #01FFFF;
     fill-opacity: 0.15; 
 }
 
