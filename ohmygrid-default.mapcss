@@ -963,10 +963,11 @@ way[boundary=administrative][admin_level=2]::core_boundary,
 relation[boundary=administrative][admin_level=2] > way::core_boundary {
     width: 4;
 }
+
 node[reason] {
     symbol-shape: circle;
     symbol-size: 10;
     symbol-fill-color: red;
-    color: black;              /* outline */
+    color: black;              
     width: 1;
 }
