@@ -974,11 +974,15 @@ node[reason] {
 }
 
 node:new {
-    icon-size: 100;
-    symbol-size: 12;
+    symbol-shape: circle;
+    symbol-size: 10;
+    symbol-fill-color: red;
     color: red;
+    text-color: red;
+    font-size: 16;
+    priority: 1000;
+    major-z-index: 10;
 }
-
 way:new {
     width: 6;
 }
