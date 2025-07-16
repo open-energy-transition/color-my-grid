@@ -974,7 +974,7 @@ node[reason] {
 }
 
 node:new {
-    symbol-shape: circle;
+    symbol-shape: square;
     symbol-size: 10;
     symbol-fill-color: red;
     color: red;
