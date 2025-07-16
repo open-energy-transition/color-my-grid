@@ -107,6 +107,10 @@ Placeholders are indicated with double curly braces, like: `{{basic_power_node_s
 - Make sure the style is enabled (checked) in the list
 - Toggle the style off and on again to refresh
 
+**MapCSS Syntax Highlighter for VS Code**
+- VS Code provides extentions to highlight errors in your mapcss
+
+
 ## 🌟 Examples
 
 ### Basic Usage

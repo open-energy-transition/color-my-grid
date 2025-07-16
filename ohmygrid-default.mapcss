@@ -33,6 +33,7 @@ setting::partial_fill {
 canvas { default-points: false; }
 node { text: auto; }
 
+
 /****************/
 /* Node styling */
 /****************/
@@ -970,4 +971,14 @@ node[reason] {
     symbol-fill-color: red;
     color: black;              
     width: 1;
+}
+
+node:new {
+    icon-size: 100;
+    symbol-size: 12;
+    color: red;
+}
+
+way:new {
+    width: 6;
 }
