@@ -983,6 +983,18 @@ node:new {
     priority: 1000;
     major-z-index: 10;
 }
+
+node:selected {
+    symbol-shape: square;
+    symbol-size: 10;
+    symbol-fill-color: yellow;
+    color: yellow;
+    text-color: red;
+    font-size: 16;
+    priority: 1000;
+    major-z-index: 10;
+}
+
 way:new {
     width: 6;
 }
