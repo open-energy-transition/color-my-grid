@@ -1,6 +1,6 @@
 # ColorMyGrid! 🎨
 
-Definition of default OhMyGrid MapCSS files and tools for generating customized MapCSS styles for electrical transmission networks in JOSM (Java OpenStreetMap Editor).
+Definition of default MapYourGrid MapCSS files and tools for generating customized MapCSS styles for electrical transmission networks in JOSM (Java OpenStreetMap Editor).
 
 ## 🏙️ Defaults 
  
@@ -137,7 +137,7 @@ The [original SVG file](power-grid-legend.svg) can be edited using [Inkscape](ht
 ## 🙏 Credits
 
 - Original "Detailed Power Grid Style" by FLacombe
-- Adapted for transmission grid mapping by [OhMyGrid](https://ohmygrid.org/) 
+- Adapted for transmission grid mapping by [MapYourGrid](https://mapyourgrid.org/) 
 
 ## 🔗 Related Links
 
