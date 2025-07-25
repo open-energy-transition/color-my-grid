@@ -976,9 +976,9 @@ node[reason] {
 node:new {
     symbol-shape: square;
     symbol-size: 10;
-    symbol-fill-color: red;
-    color: red;
-    text-color: red;
+    symbol-fill-color: white;
+    color: white;
+    text-color: black;
     font-size: 16;
     priority: 1000;
     major-z-index: 10;
