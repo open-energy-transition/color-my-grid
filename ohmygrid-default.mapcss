@@ -966,8 +966,12 @@ way[boundary=administrative]::core_boundary {
 way[boundary=administrative][admin_level=1]::core_boundary,
 relation[boundary=administrative][admin_level=1] > way::core_boundary,
 way[boundary=administrative][admin_level=2]::core_boundary,
-relation[boundary=administrative][admin_level=2] > way::core_boundary {
-    width: 4;
+relation[boundary=administrative][admin_level=2] > way::core_boundary,
+way[boundary=administrative][admin_level=3]::core_boundary,
+relation[boundary=administrative][admin_level=3] > way::core_boundary,
+way[boundary=administrative][admin_level=4]::core_boundary,
+relation[boundary=administrative][admin_level=4] > way::core_boundary {
+    width: 6;
 }
 
 node[reason] {
