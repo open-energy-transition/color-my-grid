@@ -556,6 +556,11 @@ way[power=line][voltage=0] {
     color: white;
 }
 
+/* Multiple voltages */
+way[power=line][voltage*=";"] {
+  color: #ffe600ff;           /* red overlay to indicate multi-voltage */
+}
+
 /* Voltage-based styling with voltage labels for all lines/cables */
 
 way[power=line][voltage>0][voltage<=132000] {
@@ -976,8 +981,8 @@ node[reason] {
 node:new {
     symbol-shape: square;
     symbol-size: 10;
-    symbol-fill-color: white;
-    color: white;
+    symbol-fill-color: red;
+    color: red;
     text-color: black;
     font-size: 16;
     priority: 1000;
