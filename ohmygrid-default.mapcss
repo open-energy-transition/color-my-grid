@@ -969,7 +969,8 @@ node[reason] {
     width: 1;
 }
 
-node:new:tagged {
+/*
+node:new!:tagged {
     symbol-shape: square;
     symbol-size: 10;
     symbol-fill-color: red;
@@ -979,6 +980,7 @@ node:new:tagged {
     priority: 1000;
     major-z-index: 10;
 }
+*/ 
 
 node:selected {
     symbol-shape: square;
