@@ -77,15 +77,6 @@ node|z15-[power=portal] {
     symbol-size: 4; 
 }
 
-node|z-15[power=tower],
-node|z-15[power=pole] {
-    symbol-shape: square;
-    symbol-size: 2; 
-    symbol-fill-opacity: 0;
-    symbol-stroke-opacity: 0;
-    major-z-index: 1.0; 
-}
-
 /* Enhanced visualization for power towers attributes */
 node|z15-19[power=tower][design] {
     text: "design";
@@ -173,6 +164,42 @@ node|z10-["generator:source"=coal] { icon-image: "presets/power/power_source-coa
 node|z10-["generator:source"=gas] { icon-image: "presets/power/power_source-gas.svg"; set icon_z17; }
 node|z10-["generator:source"=biomass] { icon-image: "presets/power/power_source-biofuel.svg"; set icon_z17; }
 node|z10-["generator:source"=oil] { icon-image: "presets/power/power_source-oil.svg"; set icon_z17; }
+
+/* Power generator area styling */
+node|z-13[power=generator] {
+    width: 0.5;
+    symbol-size: 0; 
+    symbol-fill-opacity: 0;
+}
+
+/* Zoom level behaviors for nodes */
+node|z-16[setting("hide_icons")].icon_z17!.icon_z0,
+relation|z-16[type=restriction][setting("hide_icons")] {
+    icon-image: none;
+}
+node|z-17[setting("hide_icons")]!.text_z0 {
+    text: none;
+}
+way > node|z-15[setting("shrink_nodes")]!:tagged {
+    symbol-shape: none;
+}
+node|z-17:tagged {
+    symbol-stroke-color: none;
+    symbol-fill-color: none;
+    text: none;
+    font-size: 0;
+}
+
+node:selected {
+    symbol-shape: square;
+    symbol-size: 10;
+    symbol-fill-color: yellow;
+    color: yellow;
+    text-color: red;
+    font-size: 16;
+    priority: 1000;
+    major-z-index: 10;
+}
 
 /*****************/
 /* Area styling */
@@ -312,29 +339,29 @@ area|z20-[landuse=industrial] {
 /* Dynamic widths for power plants - fixed colors */
 way|z0-15[power=plant] {
     width: 0.5;
-    color: #33ff00;
-    fill-color: #33ff00;
+    color: #01FFFF;
+    fill-color: #01FFFF;
     fill-opacity: 0; 
 }
 
 area|z0-15[power=plant] {
     width: 0.5;
-    color: #33ff00;
-    fill-color: #33ff00;
+    color: #01FFFF;
+    fill-color: #01FFFF;
     fill-opacity: 0; 
 }
 
 way|z16-19[power=plant] {
     width: 2;
-    color: #33ff00;
-    fill-color: #33ff00;
+    color: #01FFFF;
+    fill-color: #01FFFF;
     fill-opacity: 0.1; 
 }
 
 way|z20-[power=plant] {
     width: 1;
-    color: #33ff00;
-    fill-color: #33ff00;
+    color: #01FFFF;
+    fill-color: #01FFFF;
     fill-opacity: 0.15; 
 }
 
@@ -385,13 +412,6 @@ area|z20-[power=plant] {
     font-weight: bold; 
     text-position: center; 
     z-index: 8; 
-}
-
-/* Power generator area styling */
-node|z-13[power=generator] {
-    width: 0.5;
-    symbol-size: 0; 
-    symbol-fill-opacity: 0;
 }
 
 /* Dynamic widths for generators */
@@ -477,14 +497,49 @@ area|z10-["generator:source"=oil] {
     fill-color: power#eeeeee;
 }
 
+/* Area fill settings */
+area[setting("partial_fill")] {
+    fill-extent: 15;
+}
+
+area|z-13[setting("partial_fill")] {
+    fill-extent-threshold: 1.0;
+}
+
+area[setting("partial_fill")]:closed2 {
+    fill-extent: 25;
+    fill-extent-threshold: JOSM_pref("draw.area.extent_threshold", 0.5);
+}
+
+relation[boundary=administrative] > way::core_boundary,
+way[boundary=administrative]::core_boundary {
+    z-index: 2;
+    modifier: false;
+    width: 1;
+    color: boundary#fb0379;
+    dashes: 9,9;
+}
+way[boundary=administrative][admin_level=1]::core_boundary,
+relation[boundary=administrative][admin_level=1] > way::core_boundary,
+way[boundary=administrative][admin_level=2]::core_boundary,
+relation[boundary=administrative][admin_level=2] > way::core_boundary {
+    width: 4;
+}
+
 /******************/
 /* Line styling */
 /******************/
+way:new!:tagged {
+    width: 6;
+}
 
 way[/^(construction:|disused:)?power$/=~/line|minor_line|cable/]{ set .power_segment_all;}
 way[power=~/line|minor_line|cable/]{ set .power_segment_current;}
 way["construction:power"=~/line|minor_line|cable/],
 way[power=~/line|minor_line|cable/][construction=yes]{ set .power_segment_construction;}
+way["disused:power"=~/line|minor_line|cable/],
+way[power=~/line|minor_line|cable/][disused=yes]{ set .power_segment_disused;}
+way["removed:power"=~/line|minor_line|cable/]{ set .power_segment_removed;}
 
 /* Zoom-dependent line widths */
 way|z0-15.power_segment_all { width: 1; }
@@ -715,6 +770,32 @@ way.power_segment_construction {
     dashes: 8, 4;
     opacity: 0.8;
 }
+way|z14-.power_segment_construction {
+    text: eval("construction");
+    text-color: black;
+    font-size: 11; 
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 1;
+    text-position: line;
+    text-halo-radius: 2;
+}
+
+/* Disused and removed power lines */
+way.power_segment_disused, way.power_segment_removed {
+    dashes: 10,6;
+    color: #9A9A9A;
+}
+way|z14-.power_segment_disused, way.power_segment_removed {
+    text: eval("disused");
+    text-color: black;
+    font-size: 11; 
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 1;
+    text-position: line;
+    text-halo-radius: 2;
+}
 
 /* Bridge/Tunnel styling for power */
 way.power_segment_all[bridge=yes]::bridge_power {
@@ -829,51 +910,4 @@ node[type] {
     symbol-fill-color:#700070;
     symbol-size: 12; 
     symbol-fill-opacity: 1.0;
-}
-
-/* Zoom level behaviors for nodes */
-node|z-16[setting("hide_icons")].icon_z17!.icon_z0,
-relation|z-16[type=restriction][setting("hide_icons")] {
-    icon-image: none;
-}
-node|z-17[setting("hide_icons")]!.text_z0 {
-    text: none;
-}
-way > node|z-15[setting("shrink_nodes")]!:tagged {
-    symbol-shape: none;
-}
-node|z-17:tagged {
-    symbol-stroke-color: none;
-    symbol-fill-color: none;
-    text: none;
-    font-size: 0;
-}
-
-/* Area fill settings */
-area[setting("partial_fill")] {
-    fill-extent: 15;
-}
-
-area|z-13[setting("partial_fill")] {
-    fill-extent-threshold: 1.0;
-}
-
-area[setting("partial_fill")]:closed2 {
-    fill-extent: 25;
-    fill-extent-threshold: JOSM_pref("draw.area.extent_threshold", 0.5);
-}
-
-relation[boundary=administrative] > way::core_boundary,
-way[boundary=administrative]::core_boundary {
-    z-index: 2;
-    modifier: false;
-    width: 1;
-    color: boundary#fb0379;
-    dashes: 9,9;
-}
-way[boundary=administrative][admin_level=1]::core_boundary,
-relation[boundary=administrative][admin_level=1] > way::core_boundary,
-way[boundary=administrative][admin_level=2]::core_boundary,
-relation[boundary=administrative][admin_level=2] > way::core_boundary {
-    width: 4;
 }
