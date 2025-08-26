@@ -1,7 +1,7 @@
 meta {
 	title: "ohmygrid-low-density-grid-painting";
 	description: "A style for fast electrical grid mapping of wide-area transmission networks. Adapted from the 'detailed power grid style' by FLacombe.";
-	author: "Mwiche", "Oh My Grid Initiative";
+	author: "Mwiche", "FLacombe", "Map Your Grid Initiative";
 }
 
 /* Settings */
@@ -68,7 +68,7 @@ way|z15-[power=portal] {
     width: 3;
     color: #e6e6e6;
 }
-way|z15-[power="portal"] node{
+way|z15-[power="portal"] node[!power]{
     symbol-shape:triangle;
     symbol-size:10;
     symbol-fill-color: #e6e6e6;
@@ -210,7 +210,7 @@ area[power=substation]{
 area|z0-15[power=substation] {
     width: 10;
     symbol-size: 3;
-    fill-opacity: 0.07; 
+    fill-opacity: 0.07;
 }
 
 area|z16-19[power=substation] {
