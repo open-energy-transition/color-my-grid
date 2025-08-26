@@ -78,6 +78,16 @@ node|z15-[power=portal] {
     symbol-size: 5; 
 }
 
+/* Enhanced visualization for power towers attributes */
+node|z15-19[power=tower][design] {
+    text: "design";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 1;
+    text-offset-y: -15;
+    font-size: 8;
+}
+
 node|z-15[power=tower],
 node|z-15[power=pole] {
     symbol-shape: square;
@@ -134,8 +144,6 @@ node|z-18[power=substation][substation=minor_distribution] {
     fill-opacity: 0.05; 
 }
 
-
-
 /* Power transformer node styling */
 node|z10-[power=transformer], way|z10-[power=transformer] {
     icon-size: 8;
@@ -145,6 +153,35 @@ node|z10-[power=transformer], way|z10-[power=transformer] {
     color: cyan;
     fill-color: cyan;
     width: 1;
+}
+
+/* Generator sources node styling - visible only at z10+ */
+node|z10-["generator:source"=nuclear] { icon-image: "presets/power/power_source-nuclear.svg"; set icon_z17; }
+node|z10-["generator:source"=wind] { icon-image: "presets/power/power_source-wind.svg"; set icon_z17; }
+node|z10-["generator:source"=hydro] { icon-image: "presets/power/power_source-water.svg"; set icon_z17; }
+node|z10-["generator:source"=solar] { icon-image: "presets/power/power_source-sun.svg"; set icon_z17; }
+node|z10-["generator:source"=coal] { icon-image: "presets/power/power_source-coal.svg"; set icon_z17; }
+node|z10-["generator:source"=gas] { icon-image: "presets/power/power_source-gas.svg"; set icon_z17; }
+node|z10-["generator:source"=biomass] { icon-image: "presets/power/power_source-biofuel.svg"; set icon_z17; }
+node|z10-["generator:source"=oil] { icon-image: "presets/power/power_source-oil.svg"; set icon_z17; }
+
+/* All Power generator are visible on higher zoom level besides solar */ 
+node|z-15[power=generator] {
+    font-size: 0;
+    color: #FFD700;
+    symbol-shape: circle;
+    symbol-fill-color: #FFD700;
+    symbol-size: 5; 
+    symbol-fill-opacity: 0.7;
+}
+
+node|z-15["generator:source"=solar] {
+    font-size: 0;
+    color: yellow;
+    symbol-shape: square;
+    symbol-fill-color: yellow;
+    symbol-size: 1; 
+    symbol-fill-opacity: 0.7;
 }
 
 /*****************/
@@ -434,14 +471,14 @@ area|z20-[power=generator] {
 }
 
 /* Generator sources area styling */
-area|z10-[generator:source=nuclear],
-area|z10-[generator:source=wind],
-area|z10-[generator:source=hydro],
-area|z10-[generator:source=solar],
-area|z10-[generator:source=coal],
-area|z10-[generator:source=gas],
-area|z10-[generator:source=biomass],
-area|z10-[generator:source=oil] {
+area|z10-["generator:source"=nuclear],
+area|z10-["generator:source"=wind],
+area|z10-["generator:source"=hydro],
+area|z10-["generator:source"=solar],
+area|z10-["generator:source"=coal],
+area|z10-["generator:source"=gas],
+area|z10-["generator:source"=biomass],
+area|z10-["generator:source"=oil] {
     fill-color: power#eeeeee;
 }
 
@@ -449,60 +486,61 @@ area|z10-[generator:source=oil] {
 /* Line styling */
 /******************/
 
+way[/^(construction:|disused:)?power$/=~/line|minor_line|cable/]{ set .power_segment_all;}
+way[power=~/line|minor_line|cable/]{ set .power_segment_current;}
+way["construction:power"=~/line|minor_line|cable/],
+way[power=~/line|minor_line|cable/][construction=yes]{ set .power_segment_construction;}
+
 /* Zoom-dependent line widths */
-way|z0-15[power=line],
-way|z0-15[power=minor_line],
-way|z0-15[power=cable] { width: 4; }
-way|z16-19[power] { width: 3; }
-way|z20-[power] { width: 4; }
+way|z0-15.power_segment_all { width: 4; }
+way|z16-19.power_segment_all { width: 3; }
+way|z20-.power_segment_all { width: 4; }
 
 /* Zoom-dependent casing widths */
-way|z0-19[power][line=busbar], 
-way|z0-19[power][line=bay] { casing-width: 1; }
-way|z20-22[power][line=busbar], 
-way|z20-22[power][line=bay] { casing-width: 2; }
-way|z23-[power][line=busbar], 
-way|z23-[power][line=bay] { casing-width: 3; }
+way|z0-19.power_segment_all[line=~/busbar|bay/] { casing-width: 1; }
+way|z20-22.power_segment_all[line=~/busbar|bay/] { casing-width: 2; }
+way|z23-.power_segment_all[line=~/busbar|bay/]{ casing-width: 3; }
 
 /* Multi-circuit line casing width by zoom */
-way|z0-19[power=~/line|cable/][cables>3], 
-way|z0-19[power=~/line|cable/][circuits>1],
-way|z0-19[power=minor_line][cables>3], 
-way|z0-19[power=minor_line][circuits>1] { 
-    left-casing-width: 1; 
-    z-index: 5;
-}
-
-way|z20-22[power=~/line|cable/][cables>3], 
-way|z20-22[power=~/line|cable/][circuits>1],
-way|z20-22[power=minor_line][cables>3], 
-way|z20-22[power=minor_line][circuits>1] { 
+way|z0-19.power_segment_current[cables>3], 
+way|z0-19.power_segment_current[circuits>1] { 
     left-casing-width: 2; 
+    right-casing-width: 2;
+}
+way|z20-22.power_segment_current[cables>3], 
+way|z20-22.power_segment_current[circuits>1] { 
+    left-casing-width: 4; 
+    right-casing-width: 4;
+}
+way|z23-.power_segment_current[cables>3], 
+way|z23-.power_segment_current[circuits>1] { 
+    left-casing-width: 5; 
+    right-casing-width: 5;
+}
+way.power_segment_current[cables>3], 
+way.power_segment_current[circuits>1] {
+    left-casing-dashes: 2,14;
+    right-casing-dashes: 2,14;
     z-index: 5;
 }
 
-way|z23-[power=~/line|cable/][cables>3], 
-way|z23-[power=~/line|cable/][circuits>1],
-way|z23-[power=minor_line][cables>3], 
-way|z23-[power=minor_line][circuits>1] { 
-    left-casing-width: 3; 
+way[power=minor_line][cables>3], 
+way[power=minor_line][circuits>1] {
+    left-casing-dashes: 2,10;
+    right-casing-dashes: 2,10;
     z-index: 5;
 }
 
 /* Basic power lines - visible at all zoom levels */
-way[power=portal],
-way[power=line],
-way[power=minor_line] {
+way.power_segment_all {
     color: power#eeeeee;
 }
-
 way[power=cable] {
-    color: power#eeeeee;
     dashes: 9,9;
 }
 
 /* Power line text - only at specific zoom levels */
-way|z18-[power=line] {
+way|z18-.power_segment_all {
     text: cables;
     font-size: 15;
     text-halo-radius: 2;
@@ -529,253 +567,162 @@ way|z18-[power=cable][location=underwater] {
 }
 
 /* Power line special types */
-way[power=line][line=busbar] {
+way[line=busbar] {
     casing-color: #FFD800;
 }
 
-way[power=line][line=bay] {
+way[line=bay] {
     casing-color: lightgray;
 }
 
 /* Missing voltage */
-way[power=line][!voltage],
-way[power=line][voltage=0] {
+way.power_segment_all[!voltage],
+way.power_segment_all[voltage=0] {
     color: white;
-}
-
-/* Multiple voltages */
-way[power=line][voltage*=";"] {
-  color: #ffe600ff;           /* red overlay to indicate multi-voltage */
 }
 
 /* Voltage-based styling with voltage labels for all lines/cables */
 
-way[power=line][voltage>0][voltage<=132000] {
+/* Under 50 kV */
+way.power_segment_all[to_int(get(split(";",tag(voltage)),0))<50000] {
+    color: #7c7c7c;
+    text-halo-color: #E0E1DD;
+    z-index: 5;
+}
+way.power_segment_all[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))<50000] {
+    left-casing-color: #7c7c7c;
+    right-casing-color: #7c7c7c;
+    z-index: 5;
+}
+
+/* Show voltage label for all segments at z18+ only */
+way|z18-.power_segment_all[to_int(get(split(";",tag(voltage)),0))<50000] {
+    text: "voltage";
+    text-color: black;
+    font-size: 10; 
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line;
+}
+
+/* 50-132kV */
+way.power_segment_all[to_int(get(split(";",tag(voltage)),0))>=50000][to_int(get(split(";",tag(voltage)),0))<132000] {
     color: #deb887;
+    text-halo-color: #E0E1DD;
     z-index: 5;
 }
-
-way[power=minor_line][voltage>0][voltage<=132000] {
-    color: #deb887;
-    z-index: 5;
-}
-
-way[power=cable][voltage>0][voltage<=132000] {
-    color: #deb887;
-    z-index: 5;
-}
-
-way|z18-[power=line][voltage>0][voltage<=132000] {
-    text: "voltage";
-    text-color: black;
-    font-size: 10;
-    font-weight: bold;
-    text-allow-overlap: true;
-    text-opacity: 0.5;
-    text-position: line;
-}
-
-way[power=line][voltage>132001][voltage<=220000] {
-    color: #FF7F50;
-    z-index: 5;
-}
-
-way[power=minor_line][voltage>132001][voltage<=220000] {
-    color: #FF7F50;
-    z-index: 5;
-}
-
-way[power=cable][voltage>132001][voltage<=220000] {
-    color: #FF7F50;
-    z-index: 5;
-}
-
-way|z18-[power=line][voltage>132001][voltage<=220000] {
-    text: "voltage";
-    text-color: black;
-    font-size: 10;
-    font-weight: bold;
-    text-allow-overlap: true;
-    text-opacity: 0.5;
-    text-position: line;
-}
-
-way[power=line][voltage>220001][voltage<=310000] {
-    color: #cd5c5c;
-    z-index: 5;
-}
-
-way[power=minor_line][voltage>220001][voltage<=310000] {
-    color: #cd5c5c;
-    z-index: 5;
-}
-
-way[power=cable][voltage>220001][voltage<=310000] {
-    color: #cd5c5c;
-    z-index: 5;
-}
-
-way|z18-[power=line][voltage>220001][voltage<=310000] {
-    text: "voltage";
-    text-color: black;
-    font-size: 10;
-    font-weight: bold;
-    text-allow-overlap: true;
-    text-opacity: 0.5;
-    text-position: line;
-}
-
-way[power=line][voltage>310001][voltage<=550000] {
-    color: #9400D3;
-    z-index: 5;
-}
-
-way[power=minor_line][voltage>310001][voltage<=550000] {
-    color: #9400D3;
-    z-index: 5;
-}
-
-way[power=cable][voltage>310001][voltage<=550000] {
-    color: #9400D3;
-    z-index: 5;
-}
-
-way|z18-[power=line][voltage>310001][voltage<=550000] {
-    text: "voltage";
-    text-color: black;
-    font-size: 10;
-    font-weight: bold;
-    text-allow-overlap: true;
-    text-opacity: 0.5;
-    text-position: line;
-}
-
-way[power=line][voltage>550001][voltage<=1000000] {
-    color: #00ced1;
-    z-index: 5;
-}
-
-way[power=minor_line][voltage>550001][voltage<=1000000] {
-    color: #00ced1;
-    z-index: 5;
-}
-
-way[power=cable][voltage>550001][voltage<=1000000] {
-    color: #00ced1;
-    z-index: 5;
-}
-
-way|z18-[power=line][voltage>550001][voltage<=1000000] {
-    text: "voltage";
-    text-color: black;
-    font-size: 10;
-    font-weight: bold;
-    text-allow-overlap: true;
-    text-opacity: 0.5;
-    text-position: line;
-}
-
-/* Circuit voltage coloring */
-
-way[power=line][circuits>1][voltage>0][voltage<=132000] {
+way.power_segment_all[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))>=50000][(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))<132000] {
     left-casing-color: #deb887;
     right-casing-color: #deb887;
     z-index: 5;
 }
 
-way[power=minor_line][circuits>1][voltage>0][voltage<=132000] {
-    left-casing-color: #deb887;
-    right-casing-color: #deb887;
+way|z18-.power_segment_all[to_int(get(split(";",tag(voltage)),0))>=50000][to_int(get(split(";",tag(voltage)),0))<132000] {
+    text: "voltage";
+    text-color: black;
+    font-size: 10; 
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line;
+}
+
+/* 132-235kV */
+way.power_segment_all[to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<235000] {
+    color: #ff7f50;
+    z-index: 5;
+}
+way.power_segment_all[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))>=132000][(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))<235000] {
+    left-casing-color: #ff7f50;
+    right-casing-color: #ff7f50;
     z-index: 5;
 }
 
-way[power=cable][circuits>1][voltage>0][voltage<=132000] {
-    left-casing-color: #deb887;
-    right-casing-color: #deb887;
-    z-index: 5;
+way|z18-.power_segment_all[to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<235000] {
+    text: "voltage";
+    text-color: black;
+    font-size: 10; 
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line; 
 }
 
-way[power=line][circuits>1][voltage>132001][voltage<=220000] {
-    left-casing-color: #FF7F50;
-    right-casing-color: #FF7F50;
+/* 235-310kV */
+way.power_segment_all[to_int(get(split(";",tag(voltage)),0))>=235000][to_int(get(split(";",tag(voltage)),0))<310000] {
+    color: #cd5c5c;
+    text-halo-color: #FF1493;
     z-index: 5;
 }
-
-way[power=minor_line][circuits>1][voltage>132001][voltage<=220000] {
-    left-casing-color: #FF7F50;
-    right-casing-color: #FF7F50;
-    z-index: 5;
-}
-
-way[power=cable][circuits>1][voltage>132001][voltage<=220000] {
-    left-casing-color: #FF7F50;
-    right-casing-color: #FF7F50;
-    z-index: 5;
-}
-
-way[power=line][circuits>1][voltage>220001][voltage<=310000] {
+way.power_segment_all[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))>=235000][(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))<310000] {
     left-casing-color: #cd5c5c;
     right-casing-color: #cd5c5c;
     z-index: 5;
 }
 
-way[power=minor_line][circuits>1][voltage>220001][voltage<=310000] {
-    left-casing-color: #cd5c5c;
-    right-casing-color: #cd5c5c;
+way|z18-.power_segment_all[to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<310000] {
+    text: "voltage";
+    text-color: black;
+    font-size: 10; 
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line; 
+}
+
+/* 310-550kV */
+way.power_segment_all[to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<550000] {
+    color: #9400d3;
+    text-halo-color: #E0E1DD;
+    z-index: 5;
+}
+way.power_segment_all[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))>=310000][(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))<550000] {
+    left-casing-color: #9400d3;
+    right-casing-color: #9400d3;
     z-index: 5;
 }
 
-way[power=cable][circuits>1][voltage>220001][voltage<=310000] {
-    left-casing-color: #cd5c5c;
-    right-casing-color: #cd5c5c;
-    z-index: 5;
+way|z18-.power_segment_all[to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<550000] {
+    text: "voltage";
+    text-color: black;
+    font-size: 10; 
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line; 
 }
 
-way[power=line][circuits>1][voltage>310001][voltage<=550000] {
-    left-casing-color: #9400D3;
-    right-casing-color: #9400D3;
+/* >550kV */
+way.power_segment_all[to_int(get(split(";",tag(voltage)),0))>=550000] {
+    color: #00ced1;
+    text-halo-color: #E0E1DD;
     z-index: 5;
 }
-
-way[power=minor_line][circuits>1][voltage>310001][voltage<=550000] {
-    left-casing-color: #9400D3;
-    right-casing-color: #9400D3;
-    z-index: 5;
-}
-
-way[power=cable][circuits>1][voltage>310001][voltage<=550000] {
-    left-casing-color: #9400D3;
-    right-casing-color: #9400D3;
-    z-index: 5;
-}
-
-way[power=line][circuits>1][voltage>550001][voltage<=1000000] {
+way.power_segment_all[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))>=550000] {
     left-casing-color: #00ced1;
     right-casing-color: #00ced1;
     z-index: 5;
 }
 
-way[power=minor_line][circuits>1][voltage>550001][voltage<=1000000] {
-    left-casing-color: #00ced1;
-    right-casing-color: #00ced1;
-    z-index: 5;
+way|z18-.power_segment_all[to_int(get(split(";",tag(voltage)),0))>=550000] {
+    text: "voltage";
+    text-color: black;
+    font-size: 10; 
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line; 
 }
 
-way[power=cable][circuits>1][voltage>550001][voltage<=1000000] {
-    left-casing-color: #00ced1;
-    right-casing-color: #00ced1;
-    z-index: 5;
-}
 /* Proposed and construction power lines */
-way[power=line][proposed=yes],
-way[power=line][construction=yes] {
+way.power_segment_construction {
     dashes: 8, 4;
     opacity: 0.8;
 }
 
 /* Bridge/Tunnel styling for power */
-way[power=line][bridge=yes]::bridge_power,
-way[power=cable][bridge=yes]::bridge_power {
+way.power_segment_all[bridge=yes]::bridge_power {
     major-z-index: 2;
     object-z-index: -1;
     width: +4;
@@ -783,8 +730,7 @@ way[power=cable][bridge=yes]::bridge_power {
     opacity: 0.9;
 }
 
-way[power=line][tunnel=yes]::tunnel_power,
-way[power=cable][tunnel=yes]::tunnel_power {
+way.power_segment_all[tunnel=yes]::tunnel_power {
     major-z-index: 2;
     object-z-index: -1;
     width: +3;
@@ -792,28 +738,8 @@ way[power=cable][tunnel=yes]::tunnel_power {
     opacity: 0.9;
 }
 
-/* Generator sources node styling - visible only at z10+ */
-node|z10-[generator:source=nuclear] { icon-image: "presets/power/power_source-nuclear.svg"; set icon_z17; }
-node|z10-[generator:source=wind] { icon-image: "presets/power/power_source-wind.svg"; set icon_z17; }
-node|z10-[generator:source=hydro] { icon-image: "presets/power/power_source-water.svg"; set icon_z17; }
-node|z10-[generator:source=solar] { icon-image: "presets/power/power_source-sun.svg"; set icon_z17; }
-node|z10-[generator:source=coal] { icon-image: "presets/power/power_source-coal.svg"; set icon_z17; }
-node|z10-[generator:source=gas] { icon-image: "presets/power/power_source-gas.svg"; set icon_z17; }
-node|z10-[generator:source=biomass] { icon-image: "presets/power/power_source-biofuel.svg"; set icon_z17; }
-node|z10-[generator:source=oil] { icon-image: "presets/power/power_source-oil.svg"; set icon_z17; }
-
-/* Enhanced visualization for power line attributes */
-node|z15-19[power=tower][design] {
-    text: "design";
-    text-color: black;
-    text-halo-color: white;
-    text-halo-radius: 1;
-    text-offset-y: -15;
-    font-size: 8;
-}
-
 /* Line frequencies only at z11+ */
-way|z14-15[power=line][frequency] {
+way|z14-15.power_segment_all[frequency] {
     text: "frequency";
     text-color: white;
     text-halo-color: black;
@@ -822,7 +748,7 @@ way|z14-15[power=line][frequency] {
     font-size: 8;
 }
 
-way|z15-[power=line][construction=yes][opening_date] {
+way|z15-.power_segment_construction[opening_date] {
     text: "opening_date";
     text-color: black;
     text-halo-color: white;
@@ -831,7 +757,7 @@ way|z15-[power=line][construction=yes][opening_date] {
     font-size: 8;
 }
 
-way|z10-[power=line][circuits="2"][voltage~=";"] {
+way|z10-.power_segment_all[circuits="2"][voltage~=";"] {
     text: "voltage";
     text-color: yellow;
     text-halo-color: black;
@@ -841,7 +767,7 @@ way|z10-[power=line][circuits="2"][voltage~=";"] {
     font-weight: bold;
 }
 
-way|z15-16[power=line][operator] {
+way|z15-16.power_segment_all[operator] {
     text: "operator";
     text-color: white;
     text-halo-color: black;
@@ -983,23 +909,4 @@ node:selected {
 
 way:new!:tagged {
     width: 6;
-}
-
-/* All Power generator are visible on higher zoom level besides solar */ 
-node|z-15[power=generator] {
-    font-size: 0;
-    color: #FFD700;
-    symbol-shape: circle;
-    symbol-fill-color: #FFD700;
-    symbol-size: 5; 
-    symbol-fill-opacity: 0.7;
-}
-
-node|z-15[generator:source=solar] {
-    font-size: 0;
-    color: yellow;
-    symbol-shape: square;
-    symbol-fill-color: yellow;
-    symbol-size: 1; 
-    symbol-fill-opacity: 0.7;
 }
