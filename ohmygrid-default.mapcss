@@ -144,6 +144,9 @@ node|z10-["generator:source"=biomass] { icon-image: "presets/power/power_source-
 node|z10-["generator:source"=oil] { icon-image: "presets/power/power_source-oil.svg"; set icon_z17; }
 
 /* All Power generator are visible on higher zoom level besides solar */ 
+node[power=generator]{
+    z-index: 4;
+}
 node|z-15[power=generator] {
     font-size: 0;
     color: #FFD700;
@@ -198,6 +201,7 @@ area[power=substation]{
     font-weight: bold; 
     text-position: center; 
     z-index: 8;
+    major-z-index: 8;
 }
 
 area|z0-15[power=substation] {
@@ -309,6 +313,7 @@ area[power=plant]{
     font-weight: bold; 
     text-position: center; 
     z-index: 6;
+    major-z-index: 6;
 }
 
 area|z0-15[power=plant] {
@@ -353,7 +358,7 @@ area[power=generator]{
     text-halo-opacity: 0.8;
     font-weight: bold; 
     text-position: center; 
-    z-index: 8;
+    z-index: 4;
 }
 area|z0-15[power=generator] {
     width: 3;
