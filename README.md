@@ -79,8 +79,11 @@ Define how different voltage levels appear on your map:
 - Lower voltage (in volts)
 - Upper voltage (in volts)
 - Line color (as a hex code)
+- Optional text halo color (as a hex code, defaults to #FFFFFF)
 
-Example: `0 1000 #7B7B7B` creates a rule for 0-1000V lines in gray.
+Examples: 
+- `0 1000 #7B7B7B` creates a rule for 0-1000V lines in gray.
+- `-1 -1 #FFFFFF` create a rul for lines without voltage in white.
 
 ## 📝 Default Structure
 
@@ -136,7 +139,7 @@ The [original SVG file](power-grid-legend.svg) can be edited using [Inkscape](ht
 
 ## 🙏 Credits
 
-- Original "Detailed Power Grid Style" by FLacombe
+- Original [Detailed Power Grid Style](https://josm.openstreetmap.de/wiki/Styles/Power) by FLacombe
 - Adapted for transmission grid mapping by [MapYourGrid](https://mapyourgrid.org/) 
 
 ## 🔗 Related Links

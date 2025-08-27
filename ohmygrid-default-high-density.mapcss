@@ -282,6 +282,7 @@ area|z15-[power=switchgear] {
     z-index: 6;
 }
 
+/* Switchgears voltage-based styles */
 area[power=switchgear][voltage<50000]{
     set .voltage_lt50;
 }
@@ -300,6 +301,7 @@ area[power=switchgear][voltage>=310000][voltage<550000]{
 area[power=switchgear][voltage>=550000]{
     set .voltage_gt550;
 }
+/* End of switchgears voltage-based styles */
 
 /* Dynamic widths for industrial areas */
 area|z0-15[landuse=industrial][!power] {
@@ -535,7 +537,7 @@ way|z18-.power_segment_live {
     text-halo-radius: 2;
 }
 
-/* Voltage-based styling */
+/* Power lines voltage-based styles */
 /* Missing voltage */
 way.power_segment_live[!voltage],
 way.power_segment_live[voltage=0] {
@@ -601,6 +603,7 @@ way.power_segment_live[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",
     set .voltage_2nd_gt550;
     z-index: 5;
 }
+/* End of power lines voltage-based styles */
 
 /* Proposed and construction power lines */
 way.power_segment_construction {
@@ -728,6 +731,7 @@ node[reason] {
 /* Common colours classes */
 /**************************/
 
+/* Voltage-based classes */
 way.voltage_no, area.voltage_no {
     color: #FFFFFF;
     fill-color: #FFFFFF;
@@ -741,8 +745,6 @@ way.voltage_lt50, area.voltage_lt50 {
     color: #7c7c7c;
     fill-color: #7c7c7c;
     text-color: #7c7c7c;
-    left-casing-color: #7c7c7c;
-    right-casing-color: #7c7c7c;
     text-halo-color: #FFFFFF;
 }
 
@@ -810,3 +812,4 @@ way.voltage_2nd_gt550, area.voltage_2nd_gt550 {
     left-casing-color: #00ced1;
     right-casing-color: #00ced1;
 }
+/* End of voltage-based classes */

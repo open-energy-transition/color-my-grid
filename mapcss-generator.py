@@ -5,7 +5,7 @@ import os
 from typing import Dict, List, Tuple, Any
 
 DEFAULT_VALUES = {
-    # Node styling variables
+    # Power nodes and supports styling variables
     "basic_power_node_symbol_size_low": 3,
     "basic_power_node_symbol_size_mid": 5,
     "basic_power_node_symbol_size_high": 8,
@@ -17,16 +17,18 @@ DEFAULT_VALUES = {
     "substation_default_color": "#FFFFFF",
     "substation_transmission_color": "#DC143C",
     "substation_distribution_color": "#008F11",
+    "substation_industrial_color": "#0046aa",
+    "substation_generation_color": "#ffb100",
     
     "power_plant_area_width_low": 5,
     "power_plant_area_width_mid": 2,
     "power_plant_area_width_high": 4,
-    "power_plant_color": "#000000",
+    "power_plant_color": "#01FFFF",
     
     "power_generator_area_width_low": 3,
     "power_generator_area_width_mid": 2,
     "power_generator_area_width_high": 3,
-    "power_generator_color": "#FFFF00",
+    "power_generator_color": "#ffd800",
     
     "industrial_area_width_low": 1,
     "industrial_area_width_mid": 2,
@@ -59,16 +61,18 @@ DENSE_VALUES = {
     "substation_default_color": "#FFFFFF",
     "substation_transmission_color": "#DC143C",
     "substation_distribution_color": "#008F11",
+    "substation_industrial_color": "#0046aa",
+    "substation_generation_color": "#ffb100",
     
     "power_plant_area_width_low": 0.5,
     "power_plant_area_width_mid": 2,
     "power_plant_area_width_high": 1,
-    "power_plant_color": "#000000",
+    "power_plant_color": "#01FFFF",
     
     "power_generator_area_width_low": 0.5,
     "power_generator_area_width_mid": 2,
     "power_generator_area_width_high": 1,
-    "power_generator_color": "#FFFF00",
+    "power_generator_color": "#ffd800",
     
     "industrial_area_width_low": 0.5,
     "industrial_area_width_mid": 1,
@@ -90,20 +94,22 @@ DENSE_VALUES = {
 
 # Define default voltage rules
 DEFAULT_VOLTAGE_RULES = [
-    (0, 132000, "#deb887"),     
-    (132001, 220000, "#FF7F50"),  
-    (220001, 310000, "#cd5c5c"), 
-    (310001, 550000, "#9400D3"), 
-    (550001, 1000000, "#00ced1") 
+    (0, 50000, "#7c7c7c"),
+    (50001, 132000, "#deb887"),
+    (132001, 200000, "#FF7F50"),
+    (200001, 310000, "#cd5c5c"),
+    (310001, 550000, "#9400D3"),
+    (550001, 1000000, "#00ced1")
 ]
 
 # Define dense voltage rules
 DENSE_VOLTAGE_RULES = [
-    (0, 132000, "#deb887"),     
-    (132001, 220000, "#FF7F50"),  
-    (220001, 310000, "#cd5c5c"), 
-    (310001, 550000, "#9400D3"), 
-    (550001, 1000000, "#00ced1") 
+    (0, 50000, "#7c7c7c"),
+    (50001, 132000, "#deb887"),
+    (132001, 200000, "#FF7F50"),
+    (200001, 310000, "#cd5c5c"),
+    (310001, 550000, "#9400D3"),
+    (550001, 1000000, "#00ced1")
 ]
 
 # User-friendly descriptions for variable categories
@@ -118,6 +124,8 @@ FRIENDLY_DESCRIPTIONS = {
     "substation_default_color": "Default color for substations (hex code)",
     "substation_transmission_color": "Color for transmission substations (hex code)",
     "substation_distribution_color": "Color for distribution substations (hex code)",
+    "substation_generation_color": "Color for generation substations (hex code)",
+    "substation_industrial_color": "Color for industrial substations (hex code)",
     
     "power_plant_area_width_low": "Border width for power plants at low zoom levels",
     "power_plant_area_width_mid": "Border width for power plants at medium zoom levels",
@@ -166,7 +174,7 @@ def get_user_input_for_variable(var_name: str, default_value: Any) -> Any:
         print(f"❌ Oops! That doesn't look right. Using the default value: {default_value}")
         return default_value
 
-def get_user_voltage_rules() -> List[Tuple[int, int, str]]:
+def get_user_voltage_rules() -> List[Tuple[int, int, str, str]]:
     """Get user input for voltage rules."""
     voltage_rules = []
     
@@ -175,6 +183,7 @@ def get_user_voltage_rules() -> List[Tuple[int, int, str]]:
     print("  • Lower voltage (in volts)")
     print("  • Upper voltage (in volts)")
     print("  • Line color (as a hex code like #FF0000)")
+    print("  • Optional text halo color (as a hex code like #FF0000)")
     print("Example: 0 1000 #7B7B7B would create a rule for 0-1000V lines in gray")
     print("Type 'done' when you've added all your voltage ranges")
     
@@ -186,16 +195,17 @@ def get_user_voltage_rules() -> List[Tuple[int, int, str]]:
                 break
             
             parts = user_input.split()
-            if len(parts) != 3:
-                print("❌ Hmm, that format doesn't look right. Please use: lower_voltage upper_voltage color")
+            if len(parts) != 3 and len(parts) != 4:
+                print("❌ Hmm, that format doesn't look right. Please use: lower_voltage upper_voltage color [text halo color]")
                 continue
             
-            lower = int(parts[0])
-            upper = int(parts[1])
+            lower = max(int(parts[0],1) if int(parts[0]) >= 0 else -1
+            upper = max(int(parts[1]),2)
             color = parts[2]
+            halo = parts[3] if len(parts) == 4 else "#FFFFFF"
             
-            voltage_rules.append((lower, upper, color))
-            print(f"✅ Added rule: {lower}V to {upper}V in {color}")
+            voltage_rules.append((lower, upper, color, halo))
+            print(f"✅ Added rule: {lower}V to {upper}V in {color} halo in {halo}")
         except ValueError as e:
             print(f"❌ Oops! {e}. Please try again.")
     
@@ -219,76 +229,112 @@ def extract_vars_from_template(template_content: str) -> List[str]:
     
     return unique_vars
 
-def process_template(template_content: str, voltage_rules: List[Tuple[int, int, str]]) -> str:
+def process_template(template_content: str, voltage_rules: List[Tuple[int, int, str, str]]) -> str:
     """Process the template to replace voltage rules and fix any syntax issues."""
-    # Find sections between "/* Voltage-based styling..." and "/* Proposed and construction..."
-    start_pattern = r'/\* Voltage-based styling with voltage labels for all lines/cables \*/'
-    end_pattern = r'/\* Proposed and construction power lines \*/'
+    # Find sections between "/* Voltage-based classes..." and "/* End of voltage-based classes..."
+    start_section = re.search(r'/\* Voltage-based classes \*/', template_content)
+    end_section = re.search(r'/\* End of voltage-based classes \*/', template_content)
     
-    start_match = re.search(start_pattern, template_content)
-    end_match = re.search(end_pattern, template_content)
-    
-    if start_match and end_match:
-        # Replace the entire section with our new voltage rules
-        start_pos = start_match.start()
-        end_pos = end_match.start()
-        
+    if start_section and end_section:
         # Build new voltage rules
-        new_rules = "/* Voltage-based styling with voltage labels for all lines/cables */\n"
+        new_rules = "/* Voltage-based classes with voltage labels for all lines/cables */\n"
         
-        # Add main voltage rules
-        for lower, upper, color in voltage_rules:
-            new_rules += f"""
-way[power=line][voltage>{lower}][voltage<={upper}] {{
+        # Create voltage classes
+        for lower, upper, color, halo in voltage_rules:
+            if lower=="-1":
+                new_rules += f"""
+way.voltage_no, area.voltage_no {{
     color: {color};
-    z-index: 5;
-}}
-
-way[power=minor_line][voltage>{lower}][voltage<={upper}] {{
-    color: {color};
-    z-index: 5;
-}}
-
-way[power=cable][voltage>{lower}][voltage<={upper}] {{
-    color: {color};
-    z-index: 5;
-}}
-
-way|z18-[power=line][voltage>{lower}][voltage<={upper}] {{
-    text: "voltage";
-    text-color: black;
-    font-size: 10;
-    font-weight: bold;
-    text-allow-overlap: true;
-    text-opacity: 0.5;
-    text-position: line;
+    fill-color: {color};
+    text-color: {color};
+    left-casing-color: {color};
+    right-casing-color: {color};
+    text-halo-color: {halo};
 }}
 """
+            else:
+                lower_str = round(int(lower) / 1000) if int(lower) > 1000 else "l"+lower
+                upper_str = round(int(upper) / 1000) if int(upper) > 1000 else "l"+upper
+                new_rules += f"""
+way.voltage_{lower_str}-{upper_str}, area.voltage_{lower_str}-{upper_str} {{
+    color: {color};
+    fill-color: {color};
+    text-color: {color};
+    text-halo-color: {halo};
+}}
+
+way.voltage_2nd_{lower_str}-{upper_str}, area.voltage_2nd_{lower_str}-{upper_str} {{
+    left-casing-color: {color};
+    right-casing-color: {color};
+}}
+"""
+        new_rules += "/* End of voltage-based classes */"
+
+        # Replace the entire section with our new voltage rules
+        start_pos = start_section.start()
+        end_pos = end_section.start()
+        template_content = template_content[:start_pos] + new_rules + template_content[end_pos:]
+
+    # Switchgears voltage styles
+    start_section = re.search(r'/\* Switchgears voltage-based styles \*/', template_content)
+    end_section = re.search(r'/\* End of switchgears voltage-based styles \*/', template_content)
+    
+    if start_section and end_section:
+        # Build new voltage rules
+        new_rules = "/* Switchgears voltage-based styles */\n"
         
-        # Add circuit voltage coloring rules
-        new_rules += "\n/* Circuit voltage coloring */\n"
-        for lower, upper, color in voltage_rules:
-            new_rules += f"""
-way[power=line][circuits>1][voltage>{lower}][voltage<={upper}] {{
-    left-casing-color: {color};
-    right-casing-color: {color};
-    z-index: 5;
-}}
-
-way[power=minor_line][circuits>1][voltage>{lower}][voltage<={upper}] {{
-    left-casing-color: {color};
-    right-casing-color: {color};
-    z-index: 5;
-}}
-
-way[power=cable][circuits>1][voltage>{lower}][voltage<={upper}] {{
-    left-casing-color: {color};
-    right-casing-color: {color};
-    z-index: 5;
+        # Create voltage styles
+        for lower, upper, color, halo in voltage_rules:
+            if lower!="-1":
+                lower_str = round(int(lower) / 1000) if int(lower) > 1000 else "l"+lower
+                upper_str = round(int(upper) / 1000) if int(upper) > 1000 else "l"+upper
+                new_rules += f"""
+area[power=switchgear][voltage>={lower}][voltage<{upper}]{{
+    set .voltage_{lower_str}-{upper_str};
 }}
 """
 
-        # Replace the section
+        new_rules += "/* End of switchgears voltage-based styles */"
+
+        # Replace the entire section with our new voltage rules
+        start_pos = start_section.start()
+        end_pos = end_section.start()
+        template_content = template_content[:start_pos] + new_rules + template_content[end_pos:]
+
+    # Lines voltage styles
+    start_section = re.search(r'/\* Power lines voltage-based styles \*/', template_content)
+    end_section = re.search(r'/\* End of power lines voltage-based styles \*/', template_content)
+    
+    if start_section and end_section:
+        # Build new voltage rules
+        new_rules = "/* Power lines voltage-based styles */\n"
+        
+        # Create voltage styles
+        for lower, upper, color, halo in voltage_rules:
+            if lower=="-1":
+                new_rules += f"""
+way.power_segment_live[!voltage],
+way.power_segment_live[voltage=0] {{
+    set .voltage_no;
+}}
+"""
+            else:
+                lower_str = round(int(lower) / 1000) if int(lower) > 1000 else "l"+lower
+                upper_str = round(int(upper) / 1000) if int(upper) > 1000 else "l"+upper
+                new_rules += f"""
+way.power_segment_live[to_int(get(split(";",tag(voltage)),0))>={lower}][to_int(get(split(";",tag(voltage)),0))<{upper}] {{
+    set .voltage_{lower_str}-{upper_str};
+}}
+way.power_segment_live[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))>={lower}][(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))<{upper}] {{
+    set .voltage_2nd_{lower_str}-{upper_str};
+}}
+"""
+
+        new_rules += "/* End of power lines voltage-based styles */"
+
+        # Replace the entire section with our new voltage rules
+        start_pos = start_section.start()
+        end_pos = end_section.start()
         template_content = template_content[:start_pos] + new_rules + template_content[end_pos:]
     
     return template_content
