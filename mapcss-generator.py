@@ -8,7 +8,7 @@ DEFAULT_VALUES = {
     # Power nodes and supports styling variables
     "basic_power_node_symbol_size_low": 3,
     "basic_power_node_symbol_size_mid": 5,
-    "basic_power_node_symbol_size_high": 8,
+    "basic_power_node_symbol_size_high": 10,
     
     # Area styling variables
     "substation_area_width_low": 10,
@@ -35,17 +35,24 @@ DEFAULT_VALUES = {
     "industrial_area_width_high": 3,
     
     # Line styling variables
-    "line_cable_width_low": 4,
-    "line_cable_width_mid": 3,
-    "line_cable_width_high": 4,
+    "admin_boundaries_color": "#fb0379",
+    "admin_boundaries_width": 6,
+
+    "segment_width_low": 4,
+    "segment_width_mid": 3,
+    "segment_width_high": 4,
+    "segment_disused_color": "#9A9A9A",
     
+    "circuit_width": 4,
+    "circuit_color": "#989898",
+
     "line_busbar_bay_casing_width_low": 1,
     "line_busbar_bay_casing_width_mid": 2,
     "line_busbar_bay_casing_width_high": 3,
     
-    "multi_circuit_line_left_casing_width_low": 1,
-    "multi_circuit_line_left_casing_width_mid": 2,
-    "multi_circuit_line_left_casing_width_high": 3,
+    "segment_multi_circuit_casing_width_low": 2,
+    "segment_multi_circuit_casing_width_mid": 4,
+    "segment_multi_circuit_casing_width_high": 5,
 }
 
 DENSE_VALUES = {
@@ -79,37 +86,48 @@ DENSE_VALUES = {
     "industrial_area_width_high": 2,
     
     # Line styling variables
-    "line_cable_width_low": 1,
-    "line_cable_width_mid": 2,
-    "line_cable_width_high": 3,
+    "admin_boundaries_color": "#fb0379",
+    "admin_boundaries_width": 4,
+
+    "segment_width_low": 1,
+    "segment_width_mid": 2,
+    "segment_width_high": 3,
+    "segment_disused_color": "#9A9A9A",
     
+    "circuit_width": 4,
+    "circuit_color": "#989898",
+
     "line_busbar_bay_casing_width_low": 0.5,
     "line_busbar_bay_casing_width_mid": 1,
     "line_busbar_bay_casing_width_high": 2,
     
-    "multi_circuit_line_left_casing_width_low": 0.5,
-    "multi_circuit_line_left_casing_width_mid": 1,
-    "multi_circuit_line_left_casing_width_high": 2,
+    "segment_multi_circuit_casing_width_low": 1,
+    "segment_multi_circuit_casing_width_mid": 3,
+    "segment_multi_circuit_casing_width_high": 5,
 }
 
 # Define default voltage rules
+# Keep it sorted as to get proper voltages z-index
 DEFAULT_VOLTAGE_RULES = [
-    (0, 50000, "#7c7c7c"),
-    (50001, 132000, "#deb887"),
-    (132001, 200000, "#FF7F50"),
-    (200001, 310000, "#cd5c5c"),
-    (310001, 550000, "#9400D3"),
-    (550001, 1000000, "#00ced1")
+    (None, None, "#FFFFFF", "#000000"),
+    (None, 50000, "#7c7c7c", "#FFFFFF"),
+    (50000, 132000, "#deb887", "#000000"),
+    (132000, 200000, "#FF7F50", "#FFFFFF"),
+    (200000, 310000, "#cd5c5c", "#FFFFFF"),
+    (310000, 550000, "#9400D3", "#FFFFFF"),
+    (550000, None, "#00ced1", "#000000")
 ]
 
 # Define dense voltage rules
+# Keep it sorted as to get proper voltages z-index
 DENSE_VOLTAGE_RULES = [
-    (0, 50000, "#7c7c7c"),
-    (50001, 132000, "#deb887"),
-    (132001, 200000, "#FF7F50"),
-    (200001, 310000, "#cd5c5c"),
-    (310001, 550000, "#9400D3"),
-    (550001, 1000000, "#00ced1")
+    (None, None, "#FFFFFF", "#000000"),
+    (None, 50000, "#7c7c7c", "#FFFFFF"),
+    (50000, 132000, "#deb887", "#000000"),
+    (132000, 200000, "#FF7F50", "#FFFFFF"),
+    (200000, 310000, "#cd5c5c", "#FFFFFF"),
+    (310000, 550000, "#9400D3", "#FFFFFF"),
+    (550000, None, "#00ced1", "#000000")
 ]
 
 # User-friendly descriptions for variable categories
@@ -141,17 +159,23 @@ FRIENDLY_DESCRIPTIONS = {
     "industrial_area_width_mid": "Border width for industrial areas at medium zoom levels",
     "industrial_area_width_high": "Border width for industrial areas at high zoom levels",
     
-    "line_cable_width_low": "Width of power lines and cables at low zoom levels",
-    "line_cable_width_mid": "Width of power lines and cables at medium zoom levels",
-    "line_cable_width_high": "Width of power lines and cables at high zoom levels",
+    "admin_boundaries_color": "Color for administrative boundaries lines",
+    "admin_boundaries_width": "Width of administrative boundaries lines",
+
+    "segment_width_low": "Width of power lines and cables at low zoom levels",
+    "segment_width_mid": "Width of power lines and cables at medium zoom levels",
+    "segment_width_high": "Width of power lines and cables at high zoom levels",
     
+    "circuit_width": "Width of power circuits casing over lines and cables",
+    "circuit_color": "Color of power circuits casing over lines and cables",
+
     "line_busbar_bay_casing_width_low": "Width of busbar and bay casings at low zoom levels",
     "line_busbar_bay_casing_width_mid": "Width of busbar and bay casings at medium zoom levels",
     "line_busbar_bay_casing_width_high": "Width of busbar and bay casings at high zoom levels",
     
-    "multi_circuit_line_left_casing_width_low": "Width of multi-circuit line casings at low zoom levels",
-    "multi_circuit_line_left_casing_width_mid": "Width of multi-circuit line casings at medium zoom levels",
-    "multi_circuit_line_left_casing_width_high": "Width of multi-circuit line casings at high zoom levels",
+    "segment_multi_circuit_casing_width_low": "Width of multi-circuit line casings at low zoom levels",
+    "segment_multi_circuit_casing_width_mid": "Width of multi-circuit line casings at medium zoom levels",
+    "segment_multi_circuit_casing_width_high": "Width of multi-circuit line casings at high zoom levels",
 }
 
 def get_user_input_for_variable(var_name: str, default_value: Any) -> Any:
@@ -176,7 +200,7 @@ def get_user_input_for_variable(var_name: str, default_value: Any) -> Any:
 
 def get_user_voltage_rules() -> List[Tuple[int, int, str, str]]:
     """Get user input for voltage rules."""
-    voltage_rules = []
+    voltage_rules_input = []
     
     print("\n🔌 Let's set up how different voltage levels will look on your map!")
     print("For each voltage range, you'll need to provide:")
@@ -199,16 +223,26 @@ def get_user_voltage_rules() -> List[Tuple[int, int, str, str]]:
                 print("❌ Hmm, that format doesn't look right. Please use: lower_voltage upper_voltage color [text halo color]")
                 continue
             
-            lower = max(int(parts[0],1) if int(parts[0]) >= 0 else -1
-            upper = max(int(parts[1]),2)
+            lower_input = int(parts[0]) if int(parts[0]) >= 0 else None
+            upper_input = int(parts[1]) if int(parts[1]) >= 0 else None
+            lower = min(lower_input, upper_input)
+            upper = max(lower_input, upper_input)
             color = parts[2]
             halo = parts[3] if len(parts) == 4 else "#FFFFFF"
             
-            voltage_rules.append((lower, upper, color, halo))
-            print(f"✅ Added rule: {lower}V to {upper}V in {color} halo in {halo}")
+            voltage_rules_input.append((lower, upper, color, halo))
+            print(f"✅ Added rule: {voltage_range_name (lower, upper)} kV in {color} halo in {halo}")
         except ValueError as e:
             print(f"❌ Oops! {e}. Please try again.")
     
+    # Voltage ranges sorting and consistency test
+    voltage_rules = sorted(voltage_rules_input, key=lambda d: d[0])
+    current_voltage = 0
+    for lower, upper, color, halo in voltage_rules:
+        if lower is not None and lower < current_voltage:
+            print(f"❌ Inconsistent range {lower} kV to {upper} kV, overlapping lower ones. Please try again.")
+        current_voltage = upper
+
     return voltage_rules
 
 def extract_vars_from_template(template_content: str) -> List[str]:
@@ -231,7 +265,7 @@ def extract_vars_from_template(template_content: str) -> List[str]:
 
 def process_template(template_content: str, voltage_rules: List[Tuple[int, int, str, str]]) -> str:
     """Process the template to replace voltage rules and fix any syntax issues."""
-    # Find sections between "/* Voltage-based classes..." and "/* End of voltage-based classes..."
+    # Voltage global classes
     start_section = re.search(r'/\* Voltage-based classes \*/', template_content)
     end_section = re.search(r'/\* End of voltage-based classes \*/', template_content)
     
@@ -241,9 +275,8 @@ def process_template(template_content: str, voltage_rules: List[Tuple[int, int, 
         
         # Create voltage classes
         for lower, upper, color, halo in voltage_rules:
-            if lower=="-1":
-                new_rules += f"""
-way.voltage_no, area.voltage_no {{
+            if lower is None and upper is None:
+                new_rules += f"""way.voltage_no, area.voltage_no {{
     color: {color};
     fill-color: {color};
     text-color: {color};
@@ -253,22 +286,18 @@ way.voltage_no, area.voltage_no {{
 }}
 """
             else:
-                lower_str = round(int(lower) / 1000) if int(lower) > 1000 else "l"+lower
-                upper_str = round(int(upper) / 1000) if int(upper) > 1000 else "l"+upper
-                new_rules += f"""
-way.voltage_{lower_str}-{upper_str}, area.voltage_{lower_str}-{upper_str} {{
+                voltage_class = voltage_range_name (lower, upper)
+                new_rules += f"""way.voltage_{voltage_class}, area.voltage_{voltage_class} {{
     color: {color};
     fill-color: {color};
     text-color: {color};
     text-halo-color: {halo};
 }}
-
-way.voltage_2nd_{lower_str}-{upper_str}, area.voltage_2nd_{lower_str}-{upper_str} {{
+way.voltage_2nd_{voltage_class}, area.voltage_2nd_{voltage_class} {{
     left-casing-color: {color};
     right-casing-color: {color};
 }}
 """
-        new_rules += "/* End of voltage-based classes */"
 
         # Replace the entire section with our new voltage rules
         start_pos = start_section.start()
@@ -285,16 +314,22 @@ way.voltage_2nd_{lower_str}-{upper_str}, area.voltage_2nd_{lower_str}-{upper_str
         
         # Create voltage styles
         for lower, upper, color, halo in voltage_rules:
-            if lower!="-1":
-                lower_str = round(int(lower) / 1000) if int(lower) > 1000 else "l"+lower
-                upper_str = round(int(upper) / 1000) if int(upper) > 1000 else "l"+upper
-                new_rules += f"""
-area[power=switchgear][voltage>={lower}][voltage<{upper}]{{
-    set .voltage_{lower_str}-{upper_str};
+            if lower is None and upper is None:
+                continue
+
+            selector = "area[power=switchgear]"
+            voltage_class = voltage_range_name (lower, upper)
+
+            if lower is not None:
+                selector += f"[voltage>={lower}]"
+            
+            if upper is not None:
+                selector += f"[voltage<{upper}]"
+
+            new_rules += f"""{selector}{{
+    set .voltage_{voltage_class};
 }}
 """
-
-        new_rules += "/* End of switchgears voltage-based styles */"
 
         # Replace the entire section with our new voltage rules
         start_pos = start_section.start()
@@ -310,27 +345,34 @@ area[power=switchgear][voltage>={lower}][voltage<{upper}]{{
         new_rules = "/* Power lines voltage-based styles */\n"
         
         # Create voltage styles
+        current_zindex = 20
         for lower, upper, color, halo in voltage_rules:
-            if lower=="-1":
-                new_rules += f"""
-way.power_segment_live[!voltage],
+            voltage_class = voltage_range_name (lower, upper)
+            selector_1 = selector_2 = "way.power_segment_live"
+
+            if lower is None and upper is None:
+                new_rules += f"""way.power_segment_live[!voltage],
 way.power_segment_live[voltage=0] {{
-    set .voltage_no;
+    set .voltage_{voltage_class};
 }}
 """
             else:
-                lower_str = round(int(lower) / 1000) if int(lower) > 1000 else "l"+lower
-                upper_str = round(int(upper) / 1000) if int(upper) > 1000 else "l"+upper
-                new_rules += f"""
-way.power_segment_live[to_int(get(split(";",tag(voltage)),0))>={lower}][to_int(get(split(";",tag(voltage)),0))<{upper}] {{
-    set .voltage_{lower_str}-{upper_str};
+                if lower is not None:
+                    selector_1 += f'[to_int(get(split(";",tag(voltage)),0))>={lower}]'
+                    selector_2 += f'[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))>={lower}]'
+                if upper is not None:
+                    selector_1 += f'[to_int(get(split(";",tag(voltage)),0))<{upper}]'
+                    selector_2 += f'[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))<{upper}]'
+
+                new_rules += f"""{selector_1} {{
+    set .voltage_{voltage_class};
+    z-index: {current_zindex}
 }}
-way.power_segment_live[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))>={lower}][(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))<{upper}] {{
-    set .voltage_2nd_{lower_str}-{upper_str};
+{selector_2} {{
+    set .voltage_2nd_{voltage_class};
 }}
 """
-
-        new_rules += "/* End of power lines voltage-based styles */"
+            current_zindex += 1
 
         # Replace the entire section with our new voltage rules
         start_pos = start_section.start()
@@ -338,6 +380,28 @@ way.power_segment_live[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",
         template_content = template_content[:start_pos] + new_rules + template_content[end_pos:]
     
     return template_content
+
+def voltage_range_name (lower: int, upper: int) -> str:
+    if lower is not None and lower > 1000:
+        lower_str = str(round(lower / 1000))
+    elif lower is not None and lower >= 0:
+        lower_str = "l"+str(lower)
+
+    if upper is not None and upper > 1000:
+        upper_str = str(round(upper / 1000))
+    elif upper is not None and upper >= 0:
+        upper_str = "l"+str(upper)
+
+    if lower is None and upper is None:
+        result = "no"
+    elif lower is None:
+        result = "lt"+upper_str
+    elif upper is None:
+        result = "gt"+lower_str
+    else:
+        result = lower_str+"-"+upper_str
+
+    return result
 
 def main():
     print("╔════════════════════════════════════════════════════════════╗")
@@ -350,7 +414,7 @@ def main():
     if len(sys.argv) > 1:
         template_file = sys.argv[1]
     else:
-        template_file = input("📄 Which template should we use? (default: oh-my-grid-default.mapcss): ").strip() or "oh-my-grid-default.mapcss"
+        template_file = input("📄 Which template should we use? (default: map_your_grid_template.mapcss): ").strip() or "map_your_grid_template.mapcss"
     
     if not os.path.exists(template_file):
         print(f"❌ Hmm, I can't find the file '{template_file}'. Please check the path and try again.")
