@@ -365,14 +365,14 @@ area|z0-15[power=generator] {
     fill-opacity: 0;
 }
 
-area|z16-19[power=generator] {
+area|z16-18[power=generator] {
     width: 2;
-    fill-opacity: 0.8;
+    fill-opacity: 0.4;
 }
 
-area|z20-[power=generator] {
+area|z19-[power=generator] {
     width: 3;
-    fill-opacity: 0.8;
+    fill-opacity: 0.2;
     text: "name";
     font-size: 20;
 }
@@ -390,18 +390,6 @@ area|z14-16[power=generator] {
 area|z17-19[power=generator] {
     text: "name";
     font-size: 18;
-}
-
-/* Generator sources area styling */
-area|z10-["generator:source"=nuclear],
-area|z10-["generator:source"=wind],
-area|z10-["generator:source"=hydro],
-area|z10-["generator:source"=solar],
-area|z10-["generator:source"=coal],
-area|z10-["generator:source"=gas],
-area|z10-["generator:source"=biomass],
-area|z10-["generator:source"=oil] {
-    fill-color: power#eeeeee;
 }
 
 /* Area fill settings */
