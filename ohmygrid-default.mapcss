@@ -241,18 +241,22 @@ area|z14-16[power=substation] {
 area[power=substation][substation=transmission] {
     color: #DC143C;
     fill-color: #DC143C;
+    z-index:205;
 }
 area[power=substation][substation=distribution] {
     color: #008F11;
     fill-color: #008F11;
+    z-index:201;
 }
 area[power=substation][substation=generation] {
     color: #ffb100;
     fill-color: #ffb100;
+    z-index: 203;
 }
 area[power=substation][substation=industrial] {
     color: #0046aa;
     fill-color: #0046aa;
+    z-index: 202;
 }
 
 /* Switchgears from zoom 15 */
