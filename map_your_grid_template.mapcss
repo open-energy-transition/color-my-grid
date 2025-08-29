@@ -89,21 +89,21 @@ node|z15-19[power=tower][design] {
 node|z9-[power=tower]:unconnected {
     symbol-shape: square;
     symbol-fill-color: #0000FF;
-    symbol-size: 10; 
+    symbol-size: {{basic_power_node_symbol_size_high}}; 
     symbol-fill-opacity: 0.7;
     major-z-index: 1;  
 }
 
 node|z-16[power=switch] {
     font-size: 0;
-    symbol-size: 3;
+    symbol-size: {{basic_power_node_symbol_size_low}};
 }
 
 /* Power substation node styling */
 node|z-18[power=substation][substation=industrial] {
     text: "operator";
     font-size: 0;
-    symbol-size: 3;
+    symbol-size: {{basic_power_node_symbol_size_low}};
     color: #FF0000;
     fill-opacity: 0.05;
 }
@@ -111,21 +111,21 @@ node|z-18[power=substation][substation=industrial] {
 node|z18-[power=substation][substation=industrial] {
     text: "operator";
     font-size: 8;
-    symbol-size: 5;
+    symbol-size: {{basic_power_node_symbol_size_mid}};
     color: #FF0000;
     fill-opacity: 0.05;
 }
 
 node|z-18[power=substation][substation=minor_distribution] {
     font-size: 0;
-    symbol-size: 3;
+    symbol-size: {{basic_power_node_symbol_size_low}};
     color: white;
     fill-opacity: 0.05; 
 }
 
 /* Power transformer node styling */
 node|z10-[power=transformer], way|z10-[power=transformer] {
-    icon-size: 10; 
+    icon-size: {{basic_power_node_symbol_size_high}}; 
     text: name;
     text-size: 12;
     text-position: center;
@@ -143,9 +143,9 @@ node|z-15[power=generator] {
     color: #FFD700;
     symbol-shape: circle;
     symbol-stroke-color: #FFD700;
-    symbol-stroke-width: 5; 
+    symbol-stroke-width: {{basic_power_node_symbol_size_mid}}; 
     symbol-fill-color: #FFD700;
-    symbol-size: 3; 
+    symbol-size: {{basic_power_node_symbol_size_low}}; 
     symbol-fill-opacity: 0.7;
 }
 
@@ -179,7 +179,7 @@ node|z-17:tagged {
 
 node.power_node:selected {
     symbol-shape: square;
-    symbol-size: 10;
+    symbol-size: {{basic_power_node_symbol_size_high}};
     symbol-fill-color: yellow;
     color: yellow;
     text-color: red;
@@ -194,7 +194,7 @@ node.power_node:selected {
 
 /* Power substations */
 area[power=substation]{
-    color: #FFFFFF;
+    color: {{substation_default_color}};
     text-color: black;
     text-halo-color: white;
     text-halo-radius: 2;
@@ -206,13 +206,13 @@ area[power=substation]{
 }
 
 area|z0-15[power=substation] {
-    width: 10;
+    width: {{substation_area_width_low}};
     symbol-size: 3;
     fill-opacity: 0.07; 
 }
 
 area|z16-19[power=substation] {
-    width: 2;
+    width: {{substation_area_width_mid}};
     symbol-size: 5;
     fill-opacity: 0.1;
     text: "name";
@@ -220,7 +220,7 @@ area|z16-19[power=substation] {
 }
 
 area|z20-[power=substation] {
-    width: 4;
+    width: {{substation_area_width_high}};
     symbol-size: 6;
     fill-opacity: 0.15;
     text: "name";
@@ -239,23 +239,23 @@ area|z14-16[power=substation] {
 
 /* Substations roles */
 area[power=substation][substation=transmission] {
-    color: #DC143C;
-    fill-color: #DC143C;
+    color: {{substation_transmission_color}};
+    fill-color: {{substation_transmission_color}};
     z-index:205;
 }
 area[power=substation][substation=distribution] {
-    color: #008F11;
-    fill-color: #008F11;
+    color: {{substation_distribution_color}};
+    fill-color: {{substation_distribution_color}};
     z-index:201;
 }
 area[power=substation][substation=generation] {
-    color: #ffb100;
-    fill-color: #ffb100;
+    color: {{substation_generation_color}};
+    fill-color: {{substation_generation_color}};
     z-index: 203;
 }
 area[power=substation][substation=industrial] {
-    color: #0046aa;
-    fill-color: #0046aa;
+    color: {{substation_industrial_color}};
+    fill-color: {{substation_industrial_color}};
     z-index: 202;
 }
 
@@ -271,49 +271,32 @@ area|z15-[power=switchgear] {
 }
 
 /* Switchgears voltage-based styles */
-area[power=switchgear][voltage<50000]{
-    set .voltage_lt50;
-}
-area[power=switchgear][voltage>=50000][voltage<132000]{
-    set .voltage_50-132;
-}
-area[power=switchgear][voltage>=132000][voltage<200000]{
-    set .voltage_132-200;
-}
-area[power=switchgear][voltage>=200000][voltage<310000]{
-    set .voltage_200-310;
-}
-area[power=switchgear][voltage>=310000][voltage<550000]{
-    set .voltage_310-550;
-}
-area[power=switchgear][voltage>=550000]{
-    set .voltage_gt550;
-}
+
 /* End of switchgears voltage-based styles */
 
 /* Dynamic widths for industrial areas */
 area|z0-15[landuse=industrial][!power] {
     color: darkorange;
-    width: 1;
+    width: {{industrial_area_width_low}};
     dashes: 4,4;
 }
 
 area|z16-19[landuse=industrial][!power] {
     color: darkorange;
-    width: 2;
+    width: {{industrial_area_width_mid}};
     dashes: 4,4;
 }
 
 area|z20-[landuse=industrial][!power] {
     color: darkorange;
-    width: 3;
+    width: {{industrial_area_width_high}};
     dashes: 4,4;
 }
 
 /* Power plants */
 area[power=plant]{
-    color: #01FFFF;
-    fill-color: #01FFFF;
+    color: {{power_plant_color}};
+    fill-color: {{power_plant_color}};
     text-color: black;
     text-halo-color: white;
     text-halo-radius: 2;
@@ -325,17 +308,17 @@ area[power=plant]{
 }
 
 area|z0-15[power=plant] {
-    width: 5;
+    width: {{power_plant_area_width_low}};
     fill-opacity: 0; 
 }
 
 way|z16-19[power=plant] {
-    width: 2;
+    width: {{power_plant_area_width_mid}};
     fill-opacity: 0.1; 
 }
 
 way|z20-[power=plant] {
-    width: 4;
+    width: {{power_plant_area_width_high}};
     fill-opacity: 0.15;
     text: "name";
     font-size: 20;
@@ -358,8 +341,8 @@ area|z17-19[power=plant] {
 
 /* Power generators */
 area[power=generator]{
-    color: #ffd800;
-    fill-color: #ffd800;
+    color: {{power_generator_color}};
+    fill-color: {{power_generator_color}};
     text-color: black;
     text-halo-color: white;
     text-halo-radius: 2;
@@ -369,17 +352,17 @@ area[power=generator]{
     z-index: 4;
 }
 area|z0-15[power=generator] {
-    width: 3;
+    width: {{power_generator_area_width_low}};
     fill-opacity: 0;
 }
 
 way|z16-18[power=generator] {
-    width: 2;
+    width: {{power_generator_area_width_mid}};
     fill-opacity: 0.8;
 }
 
 way|z19-[power=generator] {
-    width: 3;
+    width: {{power_generator_area_width_high}};
     fill-opacity: 0.8;
     text: "name";
     font-size: 20;
@@ -419,7 +402,7 @@ way[boundary=administrative]::core_boundary {
     z-index: 2;
     modifier: false;
     width: 1;
-    color: #fb0379;
+    color: {{admin_boundaries_color}};
     dashes: 18,6,7,6;
 }
 way[boundary=administrative][admin_level=1]::core_boundary,
@@ -430,7 +413,7 @@ way[boundary=administrative][admin_level=3]::core_boundary,
 relation[boundary=administrative][admin_level=3] > way::core_boundary,
 way[boundary=administrative][admin_level=4]::core_boundary,
 relation[boundary=administrative][admin_level=4] > way::core_boundary {
-    width: 6;
+    width: {{admin_boundaries_width}};
 }
 
 /******************/
@@ -451,30 +434,30 @@ way[power=~/line|minor_line|cable/][disused=yes]{ set .power_segment_disused;}
 way["removed:power"=~/line|minor_line|cable/]{ set .power_segment_removed;}
 
 /* Zoom-dependent line widths */
-way|z0-15.power_segment_all { width: 4; }
-way|z16-19.power_segment_all { width: 3; }
-way|z20-.power_segment_all { width: 4; }
+way|z0-15.power_segment_all { width: {{segment_width_low}}; }
+way|z16-19.power_segment_all { width: {{segment_width_mid}}; }
+way|z20-.power_segment_all { width: {{segment_width_high}}; }
 
 /* Zoom-dependent casing widths */
-way|z0-19.power_segment_all[line=~/busbar|bay/] { casing-width: 1; }
-way|z20-22.power_segment_all[line=~/busbar|bay/] { casing-width: 2; }
-way|z23-.power_segment_all[line=~/busbar|bay/]{ casing-width: 3; }
+way|z0-19.power_segment_all[line=~/busbar|bay/] { casing-width: {{line_busbar_bay_casing_width_low}}; }
+way|z20-22.power_segment_all[line=~/busbar|bay/] { casing-width: {{line_busbar_bay_casing_width_mid}}; }
+way|z23-.power_segment_all[line=~/busbar|bay/]{ casing-width: {{line_busbar_bay_casing_width_high}}; }
 
 /* Multi-circuit line casing width by zoom */
 way|z0-19.power_segment_current[cables>3], 
 way|z0-19.power_segment_current[circuits>1] { 
-    left-casing-width: 2;
-    right-casing-width: 2;
+    left-casing-width: {{segment_multi_circuit_casing_width_low}};
+    right-casing-width: {{segment_multi_circuit_casing_width_low}};
 }
 way|z20-22.power_segment_current[cables>3], 
 way|z20-22.power_segment_current[circuits>1] { 
-    left-casing-width: 4;
-    right-casing-width: 4;
+    left-casing-width: {{segment_multi_circuit_casing_width_mid}};
+    right-casing-width: {{segment_multi_circuit_casing_width_mid}};
 }
 way|z23-.power_segment_current[cables>3], 
 way|z23-.power_segment_current[circuits>1] { 
-    left-casing-width: 5;
-    right-casing-width: 5;
+    left-casing-width: {{segment_multi_circuit_casing_width_high}};
+    right-casing-width: {{segment_multi_circuit_casing_width_high}};
 }
 way.power_segment_current[cables>3], 
 way.power_segment_current[circuits>1] {
@@ -520,52 +503,7 @@ way|z18-.power_segment_live {
 }
 
 /* Power lines voltage-based styles */
-way.power_segment_live[!voltage],
-way.power_segment_live[voltage=0] {
-    set .voltage_no;
-}
-way.power_segment_live[to_int(get(split(";",tag(voltage)),0))<50000] {
-    set .voltage_lt50;
-    z-index: 21
-}
-way.power_segment_live[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))<50000] {
-    set .voltage_2nd_lt50;
-}
-way.power_segment_live[to_int(get(split(";",tag(voltage)),0))>=50000][to_int(get(split(";",tag(voltage)),0))<132000] {
-    set .voltage_50-132;
-    z-index: 22
-}
-way.power_segment_live[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))>=50000][(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))<132000] {
-    set .voltage_2nd_50-132;
-}
-way.power_segment_live[to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<200000] {
-    set .voltage_132-200;
-    z-index: 23
-}
-way.power_segment_live[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))>=132000][(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))<200000] {
-    set .voltage_2nd_132-200;
-}
-way.power_segment_live[to_int(get(split(";",tag(voltage)),0))>=200000][to_int(get(split(";",tag(voltage)),0))<310000] {
-    set .voltage_200-310;
-    z-index: 24
-}
-way.power_segment_live[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))>=200000][(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))<310000] {
-    set .voltage_2nd_200-310;
-}
-way.power_segment_live[to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<550000] {
-    set .voltage_310-550;
-    z-index: 25
-}
-way.power_segment_live[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))>=310000][(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))<550000] {
-    set .voltage_2nd_310-550;
-}
-way.power_segment_live[to_int(get(split(";",tag(voltage)),0))>=550000] {
-    set .voltage_gt550;
-    z-index: 26
-}
-way.power_segment_live[(count(split(";",tag(voltage)))>1 ? to_int(get(split(";",tag(voltage)),1)) : tag(voltage))>=550000] {
-    set .voltage_2nd_gt550;
-}
+
 /* End of power lines voltage-based styles */
 
 /* Proposed and construction power lines */
@@ -593,7 +531,7 @@ way|z15-.power_segment_construction[opening_date] {
 way.power_segment_disused, way.power_segment_removed {
     width: 2;
     dashes: 10,6;
-    color: #9A9A9A;
+    color: {{segment_disused_color}};
 }
 way|z14-.power_segment_disused, way.power_segment_removed {
     text: eval("disused");
@@ -625,15 +563,15 @@ way.power_segment_all[tunnel=yes]::tunnel_power {
 
 /* Power circuits relations */
 relation[power=line_section] > way {
-    casing-width: 4;
+    casing-width: {{circuit_width}};
     casing-opacity: 0.5;
-    casing-color: #989898;
+    casing-color: {{circuit_color}};
     casing-dashes: 16,9;
 }
 relation[power=circuit] > way {
-    casing-width: 4;
+    casing-width: {{circuit_width}};
     casing-opacity: 0.5;
-    casing-color: #989898;
+    casing-color: {{circuit_color}};
     casing-dashes: 0;
 }
 
@@ -708,73 +646,6 @@ node[reason] {
 /* Common colours classes */
 /**************************/
 
-/* Voltage-based classes with voltage labels for all lines/cables */
-way.voltage_no, area.voltage_no {
-    color: #FFFFFF;
-    fill-color: #FFFFFF;
-    text-color: #FFFFFF;
-    left-casing-color: #FFFFFF;
-    right-casing-color: #FFFFFF;
-    text-halo-color: #000000;
-}
-way.voltage_lt50, area.voltage_lt50 {
-    color: #7c7c7c;
-    fill-color: #7c7c7c;
-    text-color: #7c7c7c;
-    text-halo-color: #FFFFFF;
-}
-way.voltage_2nd_lt50, area.voltage_2nd_lt50 {
-    left-casing-color: #7c7c7c;
-    right-casing-color: #7c7c7c;
-}
-way.voltage_50-132, area.voltage_50-132 {
-    color: #deb887;
-    fill-color: #deb887;
-    text-color: #deb887;
-    text-halo-color: #000000;
-}
-way.voltage_2nd_50-132, area.voltage_2nd_50-132 {
-    left-casing-color: #deb887;
-    right-casing-color: #deb887;
-}
-way.voltage_132-200, area.voltage_132-200 {
-    color: #FF7F50;
-    fill-color: #FF7F50;
-    text-color: #FF7F50;
-    text-halo-color: #FFFFFF;
-}
-way.voltage_2nd_132-200, area.voltage_2nd_132-200 {
-    left-casing-color: #FF7F50;
-    right-casing-color: #FF7F50;
-}
-way.voltage_200-310, area.voltage_200-310 {
-    color: #cd5c5c;
-    fill-color: #cd5c5c;
-    text-color: #cd5c5c;
-    text-halo-color: #FFFFFF;
-}
-way.voltage_2nd_200-310, area.voltage_2nd_200-310 {
-    left-casing-color: #cd5c5c;
-    right-casing-color: #cd5c5c;
-}
-way.voltage_310-550, area.voltage_310-550 {
-    color: #9400D3;
-    fill-color: #9400D3;
-    text-color: #9400D3;
-    text-halo-color: #FFFFFF;
-}
-way.voltage_2nd_310-550, area.voltage_2nd_310-550 {
-    left-casing-color: #9400D3;
-    right-casing-color: #9400D3;
-}
-way.voltage_gt550, area.voltage_gt550 {
-    color: #00ced1;
-    fill-color: #00ced1;
-    text-color: #00ced1;
-    text-halo-color: #000000;
-}
-way.voltage_2nd_gt550, area.voltage_2nd_gt550 {
-    left-casing-color: #00ced1;
-    right-casing-color: #00ced1;
-}
+/* Voltage-based classes */
+
 /* End of voltage-based classes */
